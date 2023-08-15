@@ -56,20 +56,24 @@ function DetailsHouse() {
 
   
   return (
+    
     <Container maxWidth="lg" className="root">
+  {loading ? (
+      <Typography>Loading...</Typography>
+    ) : (
           <Grid container>
-            <Grid xs="12" sm="12" md="6" lg="6" className="imgSection">
+            <Grid xs="12" sm="12" md="12" lg="12" className="imgSection">
               <div className="imageBox">
                   <img src={house.image || fakeImage} alt="house" />
               </div>
             </Grid>
-            <Grid xs="12" sm="12" md="6" lg="6" className="desc">
+            <Grid xs="12" sm="12" md="12" lg="12" className="desc">
               <Typography variant="h2">{house.title}</Typography>
               <Typography className="priceDetails">
                 <span>${house.price} pm</span>
                 <span>
                   <LocationOnRoundedIcon />
-                  <Typography>{house.location}</Typography>
+                  <Typography>{house.city}</Typography>
                 </span>
               </Typography>
               <Typography>house type : {house.category}</Typography>
@@ -83,15 +87,12 @@ function DetailsHouse() {
               <div className="descAddress">
                 <Typography>
                   <AccountCircleIcon />
-                  {house.location_id}
                 </Typography>
                 <Typography>
                   <EmailRoundedIcon />
-                  {house.email}
                 </Typography>
                 <Typography>
                   <PhoneRoundedIcon />
-                  {house.mobile}
                 </Typography>
               </div>
               <div className="descBtn">
@@ -105,6 +106,7 @@ function DetailsHouse() {
               </div>
             </Grid>
           </Grid>
+              )}
     </Container>
   );
 }
