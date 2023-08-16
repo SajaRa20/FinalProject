@@ -14,9 +14,6 @@ import image from "../../Utils/images/logo.png";
 
 import "../Navbar/style.css";
 
-const pages = ["Housese", "                   ", "About us"];
-const settings = ["Profile", "Logout"];
-
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -87,11 +84,11 @@ function NavBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem  onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">About us</Typography>
+                  <Typography textAlign="center">                   </Typography>
+                  <Typography textAlign="center">Housese</Typography>
                 </MenuItem>
-              ))}
             </Menu>
           </Box>
 
@@ -121,15 +118,24 @@ function NavBar() {
               alignItems: "center",
             }}
           >
-            {pages.map((page) => (
               <Button
-                key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                About us
               </Button>
-            ))}
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                                   
+              </Button>
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Housese
+              </Button>
           </Box>
           <Box>
             <Button

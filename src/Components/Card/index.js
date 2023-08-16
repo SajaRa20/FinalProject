@@ -73,14 +73,14 @@ export default function CardComponent({ house }) {
   };
 
   return (
-    <Card elevation="0" className="card">
+    <Card elevation="0" className="card" sx={{ borderRadius: '10px' }}>
       <CardActionArea>
         <CardMedia className="media">
           <img src={image} alt="house" />
         </CardMedia>
         <CardContent>
           <div className="cardTitle">
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant="h4" component="h2">
               {title.slice(0, 1).toUpperCase() + title.slice(1)}
             </Typography>
             <Typography className="location">

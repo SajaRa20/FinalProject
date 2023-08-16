@@ -4,7 +4,7 @@ import { Container, Typography } from "@mui/material";
 import CardContainer from "../../Components/CardContainer";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-import IconButton  from "@mui/material/InputAdornment";
+import InputAdornment  from "@mui/material/InputAdornment";
 import SearchIcon from '@mui/icons-material/Search';
 import "./style.css";
 
@@ -43,33 +43,29 @@ function Landing() {
           <Typography variant="h4" className="herotext">
             Find the most suitable property for you.
           </Typography>
-          <Typography variant="h4" className="herotext">
+          <Typography variant="h4" className="herotext" paddingBottom={'0.5em'}>
             You have the opportunity to list your property.
           </Typography>
-          <div className="searchBox">
-          <Container>
-          <TextField fullWidth  id="fullWidth" 
-                variant="outlined"
-                defaultValue="How can we help"
-                InputProps={{
-                  endAdornment: (
-                    <IconButton>
-                      <SearchIcon />
-                    </IconButton>
-                  ),
-                }}
-                className="custom-textfield"
-              />
-    </Container>
-        </div>
+          <TextField
+          className="herosearch"
+      variant="outlined"
+      placeholder="search about house"
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <SearchIcon />
+          </InputAdornment>
+        ),
+      }}
+    />
         </div>
       </Box >
-      <Container maxWidth="lg" className="root">
+      <Container maxWidth="lg">
         <div className="housesSection">
           <Typography variant="h4" className="sectionTitle">
             Best Sellers House
           </Typography>
-          <CardContainer houses={bestSellers} />
+          <CardContainer houses={bestSellers} className="card"/>
         </div>
 
         <div className="housesSection">
