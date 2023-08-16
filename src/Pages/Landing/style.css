@@ -15,7 +15,7 @@ body {
   align-items: flex-end;
   padding-bottom: 5em;
   min-height: 450px;
-  background-image: url(../../Utils/images/hero.png);
+  background-image: linear-gradient(rgba(42, 85, 85, 0.7), rgba(42, 85, 85, 0.7)), url(../../Utils/images/hero.png);
   background-position: center;
   background-size: cover;
 }
@@ -25,6 +25,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
+padding-bottom: 5em;
 }
 
 .herotext{
@@ -51,40 +52,23 @@ flex-direction: column;
     text-align: center;
 }
 
-.searchBox{
-        display: flex;
-     justify-content: center;
-     align-items: center;
-     flex-direction: column;
-     width: 50%;
-     height: 150px;
-     border-radius: 4px;
-     background-color: #15151515;
+
+
+  .herosearch {
+    border-radius: 20px;     
+    background: #f0f0f0; 
+    width: 600px;    
+    border: none;  
+    outline: none;
+  }
+
+.herosearch svg {
+  color: #2A5555;
+  font-size: 2em;
 }
 
+.card {
+  margin-top: 2em;
+}
 
-
-.custom-textfield {
-    background-color: #f0f0f0; 
-    border: 2px solid #f0f0f0; 
-    border-radius: 25px; 
-    max-width: 800px;
-  }
-  
-  .custom-textfield input {
-    border: none; 
-    outline: none; 
-    background-color: transparent; 
-  }
-
-  
-  
-  
-  
-  
-  
- .button:hover{
-    color: #7D7D7D;
-    transition: all 0.25s;
- }
 

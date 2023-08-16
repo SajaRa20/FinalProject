@@ -13,7 +13,7 @@ import { Box } from "@mui/material";
 function Footer() {
   return (
     <Box
-    component="footer" sx={{p: 6, bgcolor: "#2A5555"}} >
+    component="footer" sx={{p: 4, bgcolor: "#2A5555", marginTop:' 39px'}} >
     <Container maxWidth="lg">
       <Grid container  sx={{display:'flex',justifyContent:'center'}}>
         <Grid item xs={6} sm={4} >
