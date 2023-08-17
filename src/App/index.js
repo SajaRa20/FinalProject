@@ -16,15 +16,17 @@ import {
 function App() {
   return (
     <Layout>
-     <Router>
+     {/* <Router>
     <Routes>
       <Route path={HOME_PAGE} element={<Landing />} />
       <Route path={ABOUT_US} element={<AboutUs />} />
       <Route path={`${HOUSES}/:id`} element={<DetailsHouse />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
-  </Router>
-  {/* <SearchPage/> */}
+  </Router> */}
+ <Router>
+  <SearchPage/>
+ </Router>
   </Layout>
   );
 }
