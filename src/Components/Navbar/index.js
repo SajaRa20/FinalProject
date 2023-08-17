@@ -9,8 +9,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-
 import image from "../../Utils/images/logo.png";
+import { useHistory } from 'react-router-dom';
+import { ABOUT_US } from "../../Utils/routes.constant";
 
 import "../Navbar/style.css";
 
@@ -18,19 +19,10 @@ function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  const history = useHistory();
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const handleabout = () => {
+    history.push({ABOUT_US});
   };
 
   return (
@@ -61,7 +53,6 @@ function NavBar() {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              onClick={handleOpenNavMenu}
               color="inherit"
             >
               <MenuIcon />
@@ -79,12 +70,11 @@ function NavBar() {
                 horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
               }}
             >
-                <MenuItem  onClick={handleCloseNavMenu}>
+                <MenuItem >
                   <Typography textAlign="center">About us</Typography>
                   <Typography textAlign="center">                   </Typography>
                   <Typography textAlign="center">Housese</Typography>
@@ -119,19 +109,19 @@ function NavBar() {
             }}
           >
               <Button
-                onClick={handleCloseNavMenu}
+                onClick={handleabout}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 About us
               </Button>
               <Button
-                onClick={handleCloseNavMenu}
+              
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                                    
               </Button>
               <Button
-                onClick={handleCloseNavMenu}
+              
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 Housese

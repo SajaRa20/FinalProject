@@ -80,8 +80,8 @@ export default function CardComponent({ house }) {
         </CardMedia>
         <CardContent>
           <div className="cardTitle">
-            <Typography gutterBottom variant="h4" component="h2">
-              {title.slice(0, 1).toUpperCase() + title.slice(1)}
+            <Typography gutterBottom variant="h5" component="h5">
+              { title.split("").splice(0, 10).join("")}
             </Typography>
             <Typography className="location">
               <LocationOnIcon className="icon" />
@@ -89,7 +89,7 @@ export default function CardComponent({ house }) {
             </Typography>
           </div>
           <Typography variant="p" component="p" className="description">
-            {description.split(" ").splice(0, 10).join(" ")}
+            {description.split("").splice(0, 55).join("")}
           </Typography>
           <div>
             <Typography variant="h6" component="h6" className="houseType">
