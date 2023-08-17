@@ -17,15 +17,27 @@ import "./style.css";
 
 function SearchPage() {
   const [houses, setHouses] = useState([]);
+  const [type, setType] = useState();
   const [filteredHouses, setFilteredHouses] = useState([]);
-  const [location, setLocation] = useState("");
-  const [bedrooms, setBedrooms] = useState(1);
-  const [priceRange, setPriceRange] = useState([50, 700]);
+  const [location, setLocation] = useState();
+  const [bedrooms, setBedrooms] = useState(0);
+  const [priceRange, setPriceRange] = useState();
+
+  const resetInputs = () => {
+    setLocation("");
+    setType("");
+    setBedrooms(0);
+    setPriceRange([50, 700]);
+  };
 
   const handleLocationChange = (event) => {
     setLocation(event.target.value);
   };
 
+  const handleTypeChange = (event) => {
+    setType(event.target.value);
+  };
+  
   const handleBedroomsChange = (event) => {
     setBedrooms(event.target.value);
   };
@@ -47,24 +59,24 @@ function SearchPage() {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    const filteredHouses = houses.filter((house) => {
-       const isLocationMatch = !location || house.city.toLowerCase() === location.toLowerCase();
-      const isBedroomsMatch = house.bedrooms == bedrooms;
-       const isPriceInRange = house.price >= priceRange[0] && house.price <= priceRange[1];
-      return  isLocationMatch && isBedroomsMatch && isPriceInRange;
-    });
+    const filteredHouses = houses.filter((house) => 
+    (!location || house.city.toLowerCase() === location.toLowerCase()) ||
+    (bedrooms && house.bedroom === +bedrooms) ||
+    (priceRange && house.price >= priceRange[0] && house.price <= priceRange[1]) ||
+    (type && house.category.toLowerCase().includes(type.toLowerCase().trim()))
+  );
     setFilteredHouses(filteredHouses);
-    console.log(filteredHouses);
   };
 
   return (
     <Container>
-      <div className="herosearch">
+      <div className="herosearchpage">
         <form className="searchhh" onSubmit={handleSearch}>
           <input
             className="hero-searchInput"
             type="search"
-            placeholder="Search for the location you want!"
+            placeholder="Search for the type you want!"
+            onChange={handleTypeChange}
           />
           <button className="serach-btn">
             <SearchIcon className="searchicon"></SearchIcon>
@@ -118,7 +130,7 @@ function SearchPage() {
           color="primary"
           textAlign="center"
         >
-          houses Available
+        {filteredHouses.length}  houses Available
         </Typography>
         <CardContainer houses={filteredHouses} />
       </div>
