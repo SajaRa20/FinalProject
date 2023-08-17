@@ -1,6 +1,4 @@
 .card {
-  width: 364px;
-  max-height: 490px;
   border: 1px solid #7D7D7D;
   font-family: 'Roboto', sans-serif;
 }
@@ -16,7 +14,6 @@
   width: 364px;
   object-fit: cover;
 }
-
 
 
 .detailsLink {
@@ -46,13 +43,10 @@
   justify-content: space-between;
 }
 
-.cardTitle h2 {
-  font-size: 18px;
-}
 
 .description {
   padding-top: 0.5em;
-  font-size: 19px;
+  font-size: 1.4em;
   color: #7D7D7D;
 }
 
