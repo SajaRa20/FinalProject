@@ -23,12 +23,12 @@ function SearchPage() {
   const [bedrooms, setBedrooms] = useState(0);
   const [priceRange, setPriceRange] = useState();
 
-  const resetInputs = () => {
-    setLocation("");
-    setType("");
-    setBedrooms(0);
-    setPriceRange([50, 700]);
-  };
+  // const resetInputs = () => {
+  //   setLocation("");
+  //   setType("");
+  //   setBedrooms(0);
+  //   setPriceRange([50, 700]);
+  // };
 
   const handleLocationChange = (event) => {
     setLocation(event.target.value);

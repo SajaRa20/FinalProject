@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import { Container, Typography } from "@mui/material";
 
 import CardContainer from "../../Components/CardContainer";
@@ -11,6 +12,11 @@ import "./style.css";
 function Landing() {
   const [houses, setHouses] = useState([]);
   const [bestSellers, setBestSellers] = useState([]);
+  const navigate = useNavigate();
+
+  const handleinput = () => {
+    navigate("/houses");
+  };
 
   useEffect(() => {
     // Fetch houses data from the API
@@ -47,6 +53,7 @@ function Landing() {
             You have the opportunity to list your property.
           </Typography>
           <TextField
+          onClick={handleinput}
           className="herosearch"
       variant="outlined"
       placeholder="search about house"

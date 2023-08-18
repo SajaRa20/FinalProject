@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,8 +11,6 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import image from "../../Utils/images/logo.png";
-import { useHistory } from 'react-router-dom';
-import { ABOUT_US } from "../../Utils/routes.constant";
 
 import "../Navbar/style.css";
 
@@ -19,11 +18,16 @@ function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleabout = () => {
-    history.push({ABOUT_US});
+    navigate("/about-us");
   };
+
+  const handlehousese = () => {
+    navigate("/houses");
+  };
+
 
   return (
     <AppBar sx={{ bgcolor: "#2A5555", height: "80px" }}>
@@ -121,7 +125,7 @@ function NavBar() {
                                    
               </Button>
               <Button
-              
+               onClick={handlehousese}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 Housese

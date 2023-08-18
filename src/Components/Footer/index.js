@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
@@ -11,6 +12,31 @@ import { Box } from "@mui/material";
 
 
 function Footer() {
+
+
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+      navigate("/about-us");
+    };
+
+    const handleTwitterClick = () => {
+      const twitterLink = 'https://twitter.com/home';
+      window.open(twitterLink, '_blank');
+    };
+
+    const handleEmailClick = () => {
+      const emailLink = 'https://mail.google.com/mail/u/0/#inbox';
+      window.open(emailLink, '_blank');
+    };
+
+    const handleLinkedClick = () => {
+      const Link = 'https://www.linkedin.com/messaging/thread/new/';
+      window.open(Link, '_blank');
+    };
+
+
+
   return (
     <Box
     component="footer" sx={{p: 4, bgcolor: "#2A5555", marginTop:' 39px'}} >
@@ -33,7 +59,7 @@ function Footer() {
           <Typography variant="body2" color="white">
           Home
           </Typography>
-          <Typography variant="body2" color="white">
+          <Typography variant="body2" color="white" onClick={handleClick}>
           about us
           </Typography>
           <Typography variant="body2" color="white">
@@ -44,15 +70,16 @@ function Footer() {
           <Typography variant="h6" sx={{color: "#EB9235"}}  gutterBottom>
           contact us
           </Typography>
-          <Link  sx={{color: "white"}}>
+          <Link  sx={{color: "white"}} onClick={handleTwitterClick}>
             <TwitterIcon />
           </Link>
           <Link
             sx={{ pl: 1, pr: 1,color: "white" }}
+            onClick={handleEmailClick}
           >
             <EmailIcon />
           </Link>
-          <Link  sx={{color: "white"}}>
+          <Link  sx={{color: "white"}} onClick={handleLinkedClick} > 
             <LinkedInIcon />
           </Link>
         </Grid>
