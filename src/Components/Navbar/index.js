@@ -28,6 +28,9 @@ function NavBar() {
     navigate("/houses");
   };
 
+  const handlelogin = () => {
+    navigate("/login");
+  };
 
   return (
     <AppBar sx={{ bgcolor: "#2A5555", height: "80px" }}>
@@ -148,6 +151,7 @@ function NavBar() {
               SIGNUP
             </Button>
             <Button
+            onClick={handlelogin}
               sx={{
                 marginRight: 2,
                 color: "#2A5555",
