@@ -5,7 +5,9 @@ import Landing from "../Pages/Landing";
 import DetailsHouse from "../Pages/DetailsHouse";
 import AboutUs from "../Pages/AboutUs";
 import SearchPage from "../Pages/Houses";
-// import { PrivateRoute, PublicRoute } from "../Components/Route";
+import Login from '../Pages/Login';
+import  PublicRoute  from "../Components/Route/PublicRoute";
+import AuthProvider from '../Components/Context/Authorization';
 import NotFound from "../Pages/NotFound";
 
 import {
@@ -21,18 +23,17 @@ import {
 function App() {
   return (
     <Layout>
-        <Routes>
-          <Route exact path={HOME_PAGE} element={<Landing />} />
-          <Route exact path={ABOUT_US} element={<AboutUs />}/>
-          <Route exact path={HOUSES} element={<SearchPage />}/>
-          <Route exact path={`${HOUSES}/:id`} element={<DetailsHouse />} />
-          {/* <PublicRoute path={LOGIN_PAGE} component={Login} />
-          <PublicRoute path={SIGNUP_PAGE} component={Register} /> */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      {/* <Router>
-  <SearchPage/>
- </Router> */}
+      <AuthProvider>
+      <Routes>
+        <Route exact path={HOME_PAGE} element={<Landing />} />
+        <Route exact path={ABOUT_US} element={<AboutUs />} />
+        <Route exact path={HOUSES} element={<SearchPage />} />
+        <Route exact path={`${HOUSES}/:id`} element={<DetailsHouse />} />
+        <PublicRoute path={LOGIN_PAGE} component={Login} />
+            {/* <PublicRoute path={SIGNUP_PAGE} component={Register} /> */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      </AuthProvider>
     </Layout>
   );
 }
