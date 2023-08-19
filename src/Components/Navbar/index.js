@@ -1,7 +1,8 @@
-import React from "react";
-import { useNavigate } from 'react-router-dom';
+import React , { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -11,12 +12,19 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import image from "../../Utils/images/logo.png";
-
+import AuthContext from '../../Components/Context/AuthContext';
 import "../Navbar/style.css";
 
 function NavBar() {
+  const { isAuth, setIsAuth } = useContext(AuthContext);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+ 
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
 
   const navigate = useNavigate();
 
@@ -81,11 +89,11 @@ function NavBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-                <MenuItem >
-                  <Typography textAlign="center">About us</Typography>
-                  <Typography textAlign="center">                   </Typography>
-                  <Typography textAlign="center">Housese</Typography>
-                </MenuItem>
+              <MenuItem>
+                <Typography textAlign="center">About us</Typography>
+                <Typography textAlign="center"> </Typography>
+                <Typography textAlign="center">Housese</Typography>
+              </MenuItem>
             </Menu>
           </Box>
 
@@ -115,60 +123,94 @@ function NavBar() {
               alignItems: "center",
             }}
           >
-              <Button
-                onClick={handleabout}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                About us
-              </Button>
-              <Button
-              
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                                   
-              </Button>
-              <Button
-               onClick={handlehousese}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                Housese
-              </Button>
-          </Box>
-          <Box>
             <Button
-              className="btn"
-              sx={{
-                marginRight: 2,
-                color: "white",
-                bgcolor: "#EB9235",
-                fontWeight: "500",
-                "&:hover": {
-                  backgroundColor: "white",
-                  color: "#2A5555",
-                },
-              }}
+              onClick={handleabout}
+              sx={{ my: 2, color: "white", display: "block" }}
             >
-              SIGNUP
+              About us
             </Button>
+            <Button sx={{ my: 2, color: "white", display: "block" }}></Button>
             <Button
-            onClick={handlelogin}
-              sx={{
-                marginRight: 2,
-                color: "#2A5555",
-                bgcolor: "white",
-                fontWeight: "500",
-                "&:hover": {
-                  backgroundColor: "#EB9235",
-                  color:"white"
-                },
-              }}
+              onClick={handlehousese}
+              sx={{ my: 2, color: "white", display: "block" }}
             >
-              LOGIN
+              Housese
             </Button>
           </Box>
+          {!isAuth ? (
+            <>
+              <Box>
+                <Button
+                  className="btn"
+                  sx={{
+                    marginRight: 2,
+                    color: "white",
+                    bgcolor: "#EB9235",
+                    fontWeight: "500",
+                    "&:hover": {
+                      backgroundColor: "white",
+                      color: "#2A5555",
+                    },
+                  }}
+                >
+                  SIGNUP
+                </Button>
+                <Button
+                  onClick={handlelogin}
+                  sx={{
+                    marginRight: 2,
+                    color: "#2A5555",
+                    bgcolor: "white",
+                    fontWeight: "500",
+                    "&:hover": {
+                      backgroundColor: "#EB9235",
+                      color: "white",
+                    },
+                  }}
+                >
+                  LOGIN
+                </Button>
+              </Box>
+            </>
+          ) : (
+            <>
+              <div>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+              </Menu>
+            </div>
+            </>
+          )}
         </Toolbar>
       </Container>
     </AppBar>
   );
 }
 export default NavBar;
+
+

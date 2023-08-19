@@ -26,10 +26,16 @@ function App() {
       <AuthProvider>
       <Routes>
         <Route exact path={HOME_PAGE} element={<Landing />} />
+        <Route exact path={HOME_PAGE} element={<PublicRoute />} > 
+          <Route exact path={LOGIN_PAGE} component={Login} />
+        </Route>
+
         <Route exact path={ABOUT_US} element={<AboutUs />} />
         <Route exact path={HOUSES} element={<SearchPage />} />
         <Route exact path={`${HOUSES}/:id`} element={<DetailsHouse />} />
-        <PublicRoute path={LOGIN_PAGE} component={Login} />
+  
+        {/* <PublicRoute exact path={LOGIN_PAGE} component={Login} /> */}
+  
             {/* <PublicRoute path={SIGNUP_PAGE} component={Register} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
