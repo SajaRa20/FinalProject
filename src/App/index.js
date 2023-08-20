@@ -22,12 +22,12 @@ import {
 
 function App() {
   return (
+    <AuthProvider>
     <Layout>
-      <AuthProvider>
       <Routes>
         <Route exact path={HOME_PAGE} element={<Landing />} />
         <Route exact path={HOME_PAGE} element={<PublicRoute />} > 
-          <Route exact path={LOGIN_PAGE} component={Login} />
+          <Route exact path={LOGIN_PAGE} component={Login} element={<Login/>} />
         </Route>
 
         <Route exact path={ABOUT_US} element={<AboutUs />} />
@@ -39,8 +39,8 @@ function App() {
             {/* <PublicRoute path={SIGNUP_PAGE} component={Register} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-      </AuthProvider>
     </Layout>
+    </AuthProvider>
   );
 }
 

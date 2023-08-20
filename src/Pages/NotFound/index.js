@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import { HOME_PAGE } from '../../Utils/routes.constant';
  import styles from './style.css';
 
-
 function NotFound() {
 
   const navigate = useNavigate();
@@ -33,7 +32,7 @@ function NotFound() {
             <Typography variant="h4" color='#2A5555'>Page is Not Found</Typography>
             <Typography>
             <Button
-        sx={{ bgcolor: '#EB9235',color:"white",fontWeight:'500' , '&:hover': {
+        sx={{ bgcolor: '#EB9235',marginTop:'1em',color:"white",fontWeight:'500' , '&:hover': {
           bgcolor: '#EB9235',color:"white"
         },  }}
         variant="outlined"

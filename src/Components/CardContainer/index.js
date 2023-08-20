@@ -15,7 +15,7 @@ function CardContainer({ houses }) {
       {houses.length ? (
         <Grid container rowSpacing={2} spacing={{ xs: 2, md: 12 }} columns={{ xs: 4, sm: 8, md: 12 }}>
           {houses.map(house => (
-            <Grid item key={house.id} xs={12} sm={6} md={4} lg={4}>
+            <Grid item key={house.id} xs={12} sm={4} md={4} lg={4}>
               <Card house={house} />
             </Grid>
           ))}

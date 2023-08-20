@@ -21,11 +21,20 @@ function NavBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
  
+  const [auth, setAuth] = React.useState(true);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleChange = (event) => {
+    setAuth(event.target.checked);
+  };
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-
   const navigate = useNavigate();
 
   const handleabout = () => {
@@ -42,6 +51,7 @@ function NavBar() {
 
   return (
     <AppBar sx={{ bgcolor: "#2A5555", height: "80px" }}>
+      {console.log(isAuth,"navbar")}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -137,7 +147,7 @@ function NavBar() {
               Housese
             </Button>
           </Box>
-          {!isAuth ? (
+          {isAuth ? (
             <>
               <Box>
                 <Button
