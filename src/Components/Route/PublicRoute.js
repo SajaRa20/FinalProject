@@ -2,16 +2,16 @@
 import React, { useContext } from 'react';
 import {  Outlet,Navigate } from 'react-router-dom';
 
-import { HOME_PAGE } from '../../Utils/routes.constant';
+import { LOGIN_PAGE } from '../../Utils/routes.constant';
 
 import AuthContext from '../Context/AuthContext';
 
-function PublicRoute() {
+function PublicRoute({...rest}) {
   const { isAuth } = useContext(AuthContext);
 
   return (
    
-      !isAuth ? <Outlet/> : <Navigate  to={HOME_PAGE} />
+      isAuth ? <Outlet {...rest} > </Outlet> : <Navigate  to='/' />
 
   );
 }
