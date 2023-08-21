@@ -72,3 +72,9 @@ padding-bottom: 5em;
 }
 
 
+@media screen and (max-width: 768px) {
+  .divhero , .header {
+   display: none;
+  }
+}
+

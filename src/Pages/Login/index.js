@@ -11,7 +11,7 @@ import image from "../../Utils/images/login.png";
 
 import AuthContext from "../../Components/Context/AuthContext";
 
-import styles from './style';
+import './style.css';
 
 function Login() {
   const {isAuth, setIsAuth } = useContext(AuthContext);
@@ -19,6 +19,10 @@ function Login() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState();
+
+const handleSignup = (event) => {
+  navigate("/register");
+};
 
   const handleName = (event) => {
     setName(event.target.value);
@@ -52,20 +56,21 @@ function Login() {
   };
 
   return (
-<styles.Container maxWidth="lg">
-  <Grid container justify="center" alignItems="center" spacing={5} paddingTop='10em'>
+<Container maxWidth="lg" className="divlogin">
+  <Grid container justify="center" alignItems="center" spacing={12} paddingTop='2em'>
     <Grid item xs={12} sm={12} md={6} lg={6}>
       <CardMedia
+      className="imglogin"
         component="img"
-        height="504"
         image={image}
       />
     </Grid>
     <Grid item xs={12} sm={12} md={6} lg={6}>
-      <styles.article>
+      <article>
         <Typography variant="h2"> Sign In</Typography>
-              <FormControl defaultValue="" required>
+              <FormControl defaultValue="" className="formlogin" required  >
             <TextField
+            className="lablelogin"
               id="outlined-basic"
               label="Enter user name..."
               variant="outlined"
@@ -73,7 +78,9 @@ function Login() {
               value={name}
             />
             <br />
+            <br />
             <TextField
+             className="lablelogin"
               type="password"
               id="outlined-basic"
               label="Enter Password..."
@@ -81,15 +88,14 @@ function Login() {
               onChange={handlePassword}
               value={password}
             />
-              <br />
             <Button
              onClick={handleSubmit}
-              className="btn"
               sx={{
-                marginRight: 2,
+                marginTop:'2.5em',
                 color: "white",
                 bgcolor: "#EB9235",
-                fontWeight: "500",
+                fontSize:'20px',
+                fontWeight: "300",
                "&:hover": {
                   backgroundColor: "#EB9235",
                  color: "white",
@@ -98,11 +104,12 @@ function Login() {
              >
               Sign in
             </Button>
+            <Typography variant="p" className="Account">  You donts have Account?<span onClick={handleSignup}> Signup here</span></Typography>
           </FormControl>
-      </styles.article>
+      </article>
     </Grid>
   </Grid>
-</styles.Container>
+</Container>
   );
 }
 

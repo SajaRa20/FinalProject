@@ -49,6 +49,11 @@ function NavBar() {
     navigate("/login");
   };
 
+  const handlregister = () => {
+    navigate("/register");
+  };
+
+
   return (
     <AppBar sx={{ bgcolor: "#2A5555", height: "80px" }}>
       {console.log(isAuth,"navbar")}
@@ -151,6 +156,7 @@ function NavBar() {
             <>
               <Box>
                 <Button
+                 onClick={handlregister}
                   className="btn"
                   sx={{
                     marginRight: 2,
