@@ -47,7 +47,7 @@ function SearchPage() {
   };
   
   useEffect(() => {
-    fetch("https://my-json-server.typicode.com/SajaRa20/mockread-api/houses")
+    fetch("https://my-json-server.typicode.com/SajaRa20/newapi/houses")
       .then((response) => response.json())
       .then((data) => {
         setHouses(data);
