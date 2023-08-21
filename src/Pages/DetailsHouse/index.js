@@ -54,11 +54,11 @@ function DetailsHouse() {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const addToFavorite = async (id) => {
     const response = await fetch(
-      `https://my-json-server.typicode.com/SajaRa20/mockread-api/houses/${id}`
+      `https://my-json-server.typicode.com/SajaRa20/newapi/houses/${id}`
     );
     const item = await response.json();
     fetch(
-      "https://my-json-server.typicode.com/SajaRa20/mockread-api/favorites",
+      "https://my-json-server.typicode.com/SajaRa20/newapi/favorites",
       {
         method: "POST",
         headers: {

@@ -56,7 +56,6 @@ function NavBar() {
 
   return (
     <AppBar sx={{ bgcolor: "#2A5555", height: "80px" }}>
-      {console.log(isAuth,"navbar")}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
