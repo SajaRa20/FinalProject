@@ -70,7 +70,7 @@ function Register() {
      };
 
       await validation.validate(userDate, {
-        abortEarly: false,
+        abortEarly: false,                                                                                                                                                                mk
       });
       
       useEffect(() => {
@@ -99,7 +99,7 @@ function Register() {
   };
 
 
-  return (
+  return (                                                
     <Container maxWidth="lg" className="divregister">
       <Grid
         container

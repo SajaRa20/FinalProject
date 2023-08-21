@@ -7,6 +7,7 @@ import AboutUs from "../Pages/AboutUs";
 import SearchPage from "../Pages/Houses";
 import Login from '../Pages/Login';
 import Register from '../Pages/Register'
+import Profile from '../Pages/Profile'
 import  PublicRoute  from "../Components/Route/PublicRoute";
 import AuthProvider from '../Components/Context/Authorization';
 import NotFound from "../Pages/NotFound";
@@ -17,7 +18,6 @@ import {
   SIGNUP_PAGE,
   HOUSES,
   PROFILE,
-  FAVORITE,
   ABOUT_US,
 } from "../Utils/routes.constant";
 
@@ -35,10 +35,6 @@ function App() {
         <Route exact path={ABOUT_US} element={<AboutUs />} />
         <Route exact path={HOUSES} element={<SearchPage />} />
         <Route exact path={`${HOUSES}/:id`} element={<DetailsHouse />} />
-  
-        {/* <PublicRoute exact path={LOGIN_PAGE} component={Login} /> */}
-  
-            {/* <PublicRoute path={SIGNUP_PAGE} component={Register} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
@@ -47,3 +43,6 @@ function App() {
 }
 
 export default App;
+
+
+

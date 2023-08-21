@@ -53,6 +53,9 @@ function NavBar() {
     navigate("/register");
   };
 
+  const handleProfile = () => {
+    navigate("/profile");
+  };
 
   return (
     <AppBar sx={{ bgcolor: "#2A5555", height: "80px" }}>
@@ -215,8 +218,7 @@ function NavBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleProfile}>Profile</MenuItem>
               </Menu>
             </div>
             </>
