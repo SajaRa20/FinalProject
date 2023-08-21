@@ -4,14 +4,13 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 import image from '../../Utils/images/about.png'
-import theme from '../../App/theme';
- import styles from './style';
+ import   './style.css';
 
 
 function AboutUs() {
   return (
-<styles.Container maxWidth="lg">
-  <Grid container justify="center" alignItems="center" spacing={5}>
+<Container maxWidth="lg">
+  <Grid container justify="center" alignItems="center" spacing={5} paddingTop='2em'>
     <Grid item xs={12} sm={12} md={6} lg={6}>
       <CardMedia
         component="img"
@@ -20,9 +19,9 @@ function AboutUs() {
       />
     </Grid>
     <Grid item xs={12} sm={12} md={6} lg={6}>
-      <styles.article theme={theme}>
+      <article>
         <Typography variant="h2">About Us</Typography>
-        <Typography>
+        <Typography className="about" variant="p">
           Provides up-to-date and reliable information that makes finding
           the property of your dreams easy and fast. It offers details about
           residential and commercial properties as well as rental properties
@@ -30,10 +29,10 @@ function AboutUs() {
           ready to make a purchase, properties are updated daily to ensure
           access to the latest and most accurate listings.
         </Typography>
-      </styles.article>
+      </article>
     </Grid>
   </Grid>
-</styles.Container>
+</Container>
 
   );
 }
