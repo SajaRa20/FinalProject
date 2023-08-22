@@ -20,6 +20,11 @@ function Footer() {
       navigate("/about-us");
     };
 
+    const handleHome = () => {
+      navigate("/");
+    };
+
+
     const handleTwitterClick = () => {
       const twitterLink = 'https://twitter.com/home';
       window.open(twitterLink, '_blank');
@@ -56,7 +61,7 @@ function Footer() {
           <Typography variant="h6" sx={{color: "#EB9235"}}  gutterBottom>
           Important links
           </Typography>
-          <Typography variant="body2" color="white">
+          <Typography variant="body2" color="white" onClick={handleHome}>
           Home
           </Typography>
           <Typography variant="body2" color="white" onClick={handleClick}>

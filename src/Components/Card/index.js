@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Card from "@mui/material/Card";
+import Box from "@mui/material/Box";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -73,67 +74,67 @@ export default function CardComponent({ house }) {
   };
 
   return (
-    <Card elevation="0" className="card" sx={{ borderRadius: '10px' }}>
-      <CardActionArea>
-        <CardMedia className="media">
-          <img src={image} alt="house" />
-        </CardMedia>
-        <CardContent>
-          <div className="cardTitle">
-            <Typography gutterBottom variant="h5" component="h5">
-              { title.split("").splice(0, 10).join("")}
-            </Typography>
-            <Typography className="location">
-              <LocationOnIcon className="icon" />
-              {city}
-            </Typography>
-          </div>
-          <Typography variant="p" component="p" className="description">
-            {description.split("").splice(0, 55).join("")}
-          </Typography>
-          <div>
-            <Typography variant="h6" component="h6" className="houseType">
-              House Type:
-              <span className="blueText">
-                {category.slice(0, 1).toUpperCase() + category.slice(1)}
-              </span>
-            </Typography>
-          </div>
-          <div className="cardDetails">
-           <div className="oneiconBox">
-           <div className="iconBox">
-            <LocalHotelIcon className="icon" />
-              <Typography>{bedroom} bd </Typography>
-            </div>
-            <div className="iconBox">
-            <BathroomIcon className="icon" />
-              <Typography>{bathroom} ba </Typography>
-            </div>
-           </div>
-            <Typography variant="h6">${price}</Typography>
-          </div>
-        </CardContent>
-      </CardActionArea>
-      <CardActions className="cardaction" >
-      <Link to={`${HOUSES}/${id}`} sx={{ bgcolor: '#EB9235',color:"white",fontWeight:'500' }} className="detailsLink">
-          more details
+    <Card sx={{ borderRadius: '10px', margin: '10px'}}>
+    <CardMedia
+      sx={{ height: 180 }}
+      image={image}
+      title="Image House"
+    />
+    <CardContent className='CardContent'>
+      <Box className="CardContentTitle">
+        <Typography gutterBottom variant="h6" component="h2" style={{fontSize:'25px'}}>
+        { title.split("").splice(0, 10).join("")}
+        </Typography>
+        <Typography gutterBottom variant="h6" component="h2" style={{fontSize:'25px'}}>
+          ${price}
+        </Typography>
+      </Box>
+     
+      
+      <Box className='detailsCardBox'>
+        
+        <Typography variant="body2" color="#909090" className='detailsCard'>
+          <LocalHotelIcon style={{fontSize: "15px", marginRight:'5px' , color :'#2A5555'}}/> 
+          {bedroom}bd
+        </Typography>
+
+        <Typography variant="body2" color="#909090" className='detailsCard'>
+          <BathroomIcon style={{fontSize: "15px", marginRight:'5px' ,color :'#2A5555'}}/>
+          {bathroom}ba
+        </Typography>
+
+        <Typography variant="body2" color="#909090" className='detailsCard'>
+          <LocationOnIcon style={{fontSize: "15px", marginRight:'5px', color :'#2A5555'}}/>
+          {city} 
+        </Typography>
+      </Box>
+      
+      <Typography variant="body2" style={{ color :'#7D7D7D' ,fontSize:'18px'}}>
+      {description.split("").splice(0, 40).join("")+'......'}
+      </Typography>
+    </CardContent>
+    
+    <CardActions className='cardActions'>
+    <Link to={`${HOUSES}/${id}`} sx={{ bgcolor: '#EB9235',color:"white",fontWeight:'500' }} className="detailsLink">
+          More Details
         </Link>
-        <>
-          <Button>
-            {isFavorite ? (
-              <FavoriteIcon style={{ color: "red" }} />
-            ) : (
-              <FavoriteBorderIcon className="favorite" onClick={() => addToFavorite(id)} />
-            )}
-          </Button>
-      <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnackbar}>
+
+   <>
+        <Button style={{padding:"1px", color:'#000'}}>
+          {isFavorite ? (
+            <FavoriteIcon style={{ color: "red", fontSize:'30px'}} />
+          ) : (
+            <FavoriteBorderIcon className="favorite" onClick={addToFavorite} style={{fontSize:'30px' ,color:'#ABABAB'}}/>
+          )}
+        </Button>
+        <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnackbar}>
         <Alert onClose={handleCloseSnackbar} severity="success">
           House added to favorites successfully!
         </Alert>
       </Snackbar>
-        </>
-      </CardActions>
-    </Card>
+     </>
+    </CardActions>
+  </Card>
   );
 }
 

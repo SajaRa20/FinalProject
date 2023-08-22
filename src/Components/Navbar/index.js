@@ -1,4 +1,4 @@
-import React , { useContext } from "react";
+import React , { useContext ,useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -7,6 +7,8 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
+import Alert from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
@@ -17,12 +19,22 @@ import "../Navbar/style.css";
 
 function NavBar() {
   const { isAuth, setIsAuth } = useContext(AuthContext);
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
  
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [auth, setAuth] = useState(true);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [error, setError] = useState('');
+
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpenSnackbar(false);
+  };
 
   const handleChange = (event) => {
     setAuth(event.target.checked);
@@ -57,9 +69,21 @@ function NavBar() {
     navigate("/profile");
   };
 
+  const handleout = () => {
+    try {
+      setIsAuth(true); 
+      setOpenSnackbar(true);
+      navigate("/");
+    } catch (err) {
+      setError('Internal server Error');
+    }
+  };
+
+
   return (
     <AppBar sx={{ bgcolor: "#2A5555", height: "80px" }}>
       <Container maxWidth="xl">
+      {console.log(isAuth)}
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -219,8 +243,14 @@ function NavBar() {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleProfile}>Profile</MenuItem>
+                <MenuItem onClick={handleout}>Log out </MenuItem>
               </Menu>
             </div>
+            <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnackbar}>
+        <Alert onClose={handleCloseSnackbar} severity="success">
+          LogOut  successfully!
+        </Alert>
+      </Snackbar>
             </>
           )}
         </Toolbar>
