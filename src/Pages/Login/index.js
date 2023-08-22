@@ -22,6 +22,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState();
   const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState();
   
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
