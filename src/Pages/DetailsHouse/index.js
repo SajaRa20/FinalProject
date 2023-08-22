@@ -31,7 +31,7 @@ function DetailsHouse() {
     async function fetchHouse() {
       try {
         const response = await fetch(
-          `https://my-json-server.typicode.com/SajaRa20/mockread-api/houses/${id}`
+          `https://my-json-server.typicode.com/SajaRa20/newapi/houses/${id}`
         );
 
         if (!response.ok) {
@@ -103,13 +103,13 @@ function DetailsHouse() {
             </Typography>
             <div className="room">
               <div className="bedroom">
-                <LocalHotelIcon className="icon" />
+                <LocalHotelIcon className="icon" style={{color :'#2A5555'}}/>
                 <Typography variant="p" className="num">
                   bd{house.bedroom}
                 </Typography>
               </div>
               <div className="bedroom">
-                <BathroomIcon className="icon" />
+                <BathroomIcon className="icon" style={{color :'#2A5555'}}/>
                 <Typography variant="p" className="num">
                   ba{house.bathroom}
                 </Typography>
@@ -147,7 +147,7 @@ function DetailsHouse() {
           </Grid>
           <Grid xs="12" sm="12" md="12" lg="4">
             <div className="loaction">
-              <LocationOnRoundedIcon />
+              <LocationOnRoundedIcon style={{color :'#2A5555'}}/>
               <Typography variant="h4" className="city">
                 {house.city}
               </Typography>
