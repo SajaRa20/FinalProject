@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { Container, Typography } from "@mui/material";
 
 import CardContainer from "../../Components/CardContainer";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-import InputAdornment  from "@mui/material/InputAdornment";
-import SearchIcon from '@mui/icons-material/Search';
+import InputAdornment from "@mui/material/InputAdornment";
+import SearchIcon from "@mui/icons-material/Search";
+import Grid from "@mui/material/Grid";
 import "./style.css";
 
 function Landing() {
@@ -44,35 +45,44 @@ function Landing() {
 
   return (
     <>
-      <Box  className="header" sx={{ width: '100%'}}>
-        <div className="divhero">
-          <Typography variant="h4" className="herotext">
-            Find the most suitable property for you.
-          </Typography>
-          <Typography variant="h4" className="herotext" paddingBottom={'0.5em'}>
-            You have the opportunity to list your property.
-          </Typography>
-          <TextField
-          onClick={handleinput}
-          className="herosearch"
-      variant="outlined"
-      placeholder="search about house"
-      InputProps={{
-        startAdornment: (
-          <InputAdornment position="start">
-            <SearchIcon />
-          </InputAdornment>
-        ),
-      }}
-    />
-        </div>
-      </Box >
+      <Box className="header" sx={{ width: "100%" }}>
+        <Grid container className="divhero">
+          <Grid item xs={12} md={12}>
+            <Typography variant="h4" className="herotext">
+              Find the most suitable property for you.
+            </Typography>
+            <Typography
+              variant="h4"
+              className="herotext"
+              paddingBottom={"0.5em"}
+            >
+              You have the opportunity to list your property.
+            </Typography>
+          </Grid>
+
+          <Grid item xs={8} md={12}>
+            <TextField
+              onClick={handleinput}
+              className="herosearch"
+              variant="outlined"
+              placeholder="search about house"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </Grid>
+        </Grid>
+      </Box>
       <Container maxWidth="lg">
         <div className="housesSection">
           <Typography variant="h4" className="sectionTitle">
             Best Sellers House
           </Typography>
-          <CardContainer houses={bestSellers} className="card"/>
+          <CardContainer houses={bestSellers} className="card" />
         </div>
 
         <div className="housesSection">

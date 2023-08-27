@@ -76,7 +76,6 @@ function UserInfo() {
   }, [user]);
 
   return (
-    <div className="root">
       <TableContainer component={Paper}>
         <Typography
           variant="h4"
@@ -117,9 +116,11 @@ function UserInfo() {
                   onChange={handleMobile}
                 />
                 <Button
-                  onClick={() => setOpen(true)}
+                 onClick={() => setOpen(true)}
+                  className="btnadd"
                   sx={{
-                    width: "500px",
+                    marginLeft:'13em',
+                    width:'200px',
                     marginTop: "2.5em",
                     marginBottom: "2.5em",
                     color: "white",
@@ -169,7 +170,6 @@ function UserInfo() {
           </TableBody>
         </Table>
       </TableContainer>
-    </div>
   );
 }
 export default UserInfo;

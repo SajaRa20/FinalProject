@@ -147,7 +147,7 @@ export default function CardComponent({ house }) {
                 />
               )}
             </Button>
-          )}
+           )}
           <Snackbar
             open={openSnackbar}
             autoHideDuration={3000}

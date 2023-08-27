@@ -16,6 +16,7 @@ import MenuItem from "@mui/material/MenuItem";
 import image from "../../Utils/images/logo.png";
 import AuthContext from '../../Components/Context/AuthContext';
 import "../Navbar/style.css";
+import { color } from "@mui/system";
 
 function NavBar() {
   const { isAuth, setIsAuth } = useContext(AuthContext);
@@ -222,9 +223,10 @@ function NavBar() {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleMenu}
-                color="inherit"
+                className="profileicon"
               >
-                <AccountCircle />
+                <AccountCircle/>
+                <Typography textAlign="center" color='white'>Hi,Saja</Typography>
               </IconButton>
                <Menu
                 id="menu-appbar"
@@ -242,7 +244,7 @@ function NavBar() {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleProfile}>Profile</MenuItem>
-                <MenuItem onClick={handleout}>Log out </MenuItem>
+                <MenuItem onClick={handleout} className="logout">Log out </MenuItem>
               </Menu>
             </div> 
             <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnackbar}>
