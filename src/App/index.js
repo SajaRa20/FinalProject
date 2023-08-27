@@ -9,6 +9,7 @@ import Login from '../Pages/Login';
 import Register from '../Pages/Register'
 import Profile from '../Pages/Profile'
 import  PublicRoute  from "../Components/Route/PublicRoute";
+import  PrivateRoute  from "../Components/Route/PrivateRoute";
 import AuthProvider from '../Components/Context/Authorization';
 import NotFound from "../Pages/NotFound";
 
@@ -30,6 +31,10 @@ function App() {
         <Route exact path={HOME_PAGE} element={<PublicRoute />} > 
           <Route exact path={LOGIN_PAGE} component={Login} element={<Login/>} />
           <Route exact path={SIGNUP_PAGE} component={Register} element={<Register/>} />
+        </Route>
+
+        <Route exact path={HOME_PAGE} element={<PrivateRoute />}>
+        <Route exact path={PROFILE} component={Profile} element={<Profile/>} />
         </Route>
 
         <Route exact path={ABOUT_US} element={<AboutUs />} />
