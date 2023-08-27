@@ -6,6 +6,13 @@ export const locationFilter = [
   'North',
 ];
 
+export const categorFilter = [
+  'roof',
+  'apartment',
+  'classic',
+  'studio',
+];
+
 
 
 export const fakeImage =
