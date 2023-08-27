@@ -100,7 +100,6 @@ function AddHouse() {
 
 
   return (
-    <div className="root">
       <TableContainer component={Paper}>
         <Typography
           variant="h4"
@@ -248,7 +247,6 @@ function AddHouse() {
           </TableBody>
         </Table>
       </TableContainer>
-    </div>
   );
 }
 

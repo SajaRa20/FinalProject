@@ -86,7 +86,6 @@ function Houses() {
   }, [refresh]);
 
   return (
-    <div className="root">
       <TableContainer component={Paper}>
         <Typography
           variant="h4"
@@ -162,7 +161,6 @@ function Houses() {
           </Snackbar>
         </Table>
       </TableContainer>
-    </div>
   );
 }
 export default Houses;

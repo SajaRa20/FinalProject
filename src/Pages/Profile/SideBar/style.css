@@ -13,6 +13,13 @@
   padding-top: 2em;
 }
 
+.tab {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start !important;
+}
+
+
 .userAvatar {
   display: flex;
   flex-direction: column;
