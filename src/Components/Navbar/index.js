@@ -20,12 +20,11 @@ import "../Navbar/style.css";
 function NavBar() {
   const { isAuth, setIsAuth } = useContext(AuthContext);
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(false);
+  const [anchorElUser, setAnchorElUser] = useState(false);
 
  
-  const [auth, setAuth] = useState(true);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(false);
   const [error, setError] = useState('');
 
   const handleCloseSnackbar = (event, reason) => {
@@ -36,9 +35,9 @@ function NavBar() {
     setOpenSnackbar(false);
   };
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
+  // const handleChange = (event) => {
+  //   setAuth(event.target.checked);
+  // };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -71,8 +70,8 @@ function NavBar() {
 
   const handleout = () => {
     try {
-      setIsAuth(true); 
       setOpenSnackbar(true);
+      setIsAuth(false); 
       navigate("/");
     } catch (err) {
       setError('Internal server Error');
@@ -178,7 +177,7 @@ function NavBar() {
               Housese
             </Button>
           </Box>
-          {isAuth ? (
+          {isAuth === false ? (
             <>
               <Box>
                 <Button
@@ -227,7 +226,7 @@ function NavBar() {
               >
                 <AccountCircle />
               </IconButton>
-              <Menu
+               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
@@ -245,7 +244,7 @@ function NavBar() {
                 <MenuItem onClick={handleProfile}>Profile</MenuItem>
                 <MenuItem onClick={handleout}>Log out </MenuItem>
               </Menu>
-            </div>
+            </div> 
             <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnackbar}>
         <Alert onClose={handleCloseSnackbar} severity="success">
           LogOut  successfully!
@@ -259,5 +258,3 @@ function NavBar() {
   );
 }
 export default NavBar;
-
-

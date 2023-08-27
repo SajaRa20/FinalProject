@@ -1,8 +1,6 @@
-
 import React, { useContext } from 'react';
 import {  Outlet,Navigate } from 'react-router-dom';
 
-import { LOGIN_PAGE } from '../../Utils/routes.constant';
 
 import AuthContext from '../Context/AuthContext';
 
@@ -11,7 +9,7 @@ function PublicRoute({...rest}) {
 
   return (
    
-      isAuth ? <Outlet {...rest} > </Outlet> : <Navigate  to='/' />
+     !isAuth ? <Outlet {...rest} > </Outlet> : <Navigate  to='/' />
 
   );
 }
