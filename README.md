@@ -17,3 +17,19 @@
 
 # User Journey ✈️
 #### As a user, I can see all available houses that able to rent, search to find houses and I can add any liked house to my favorite list , inside my profile I have my information
+
+# Prototype 🎨
+[Figma Link](https://www.figma.com/file/D4zdVZLmxtdZJkfiswjlyv/House-Hunting?type=design&node-id=0-1&mode=design&t=8BeMuyDR1R3iCg3W-0)
+
+# echnologies 💻
+### Front-end Technology:
+#### ReactJS (Hooks).
+#### Material UI
+#### Yup Validation
+
+
+
+
+
+
+
