@@ -14,6 +14,9 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
+import CreditScoreIcon from '@mui/icons-material/CreditScore';
+import './style.css'
+
 function UserInfo() {
   const [user, setUser] = useState({});
   const [username, setUsername] = useState();
@@ -136,13 +139,14 @@ function UserInfo() {
                   Save
                 </Button>
                 <Dialog open={open} onClose={() => setOpen(false)}>
+                <CreditScoreIcon className="icon-Dialog-edit"/>
                   <DialogTitle>Confirm Updating</DialogTitle>
                   <DialogContent>
                     {" "}
                     Are you sure you want to update this personal?
                   </DialogContent>
                   <DialogActions>
-                    <Button onClick={() => setOpen(false)} color="primary">
+                    <Button onClick={() => setOpen(false)} className="btn-Dialog-Cancel">
                       Cancel
                     </Button>
                     <Button
@@ -150,7 +154,7 @@ function UserInfo() {
                         handleSubmit();
                         setOpen(false);
                       }}
-                      color="primary"
+                      className="btn-Dialog-Updat"
                     >
                       Update
                     </Button>
