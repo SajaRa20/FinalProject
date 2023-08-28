@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useContext} from "react";
 import { useParams } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -11,7 +11,7 @@ import PhoneRoundedIcon from "@mui/icons-material/LocalPhone";
 import LocalHotelIcon from "@mui/icons-material/LocalHotel";
 import BathroomIcon from "@mui/icons-material/Bathroom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-
+import AuthContext from '../../Components/Context/AuthContext';
 
 import Button from "@mui/material/Button";
 
@@ -26,6 +26,7 @@ function DetailsHouse() {
   const [house, setHouse] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { isAuth } = useContext(AuthContext);
 
   useEffect(() => {
     async function fetchHouse() {
@@ -140,7 +141,7 @@ function DetailsHouse() {
                          {isFavorite ? (
               <FavoriteIcon style={{ color: "red" }} />
             ) : (
-              <FavoriteIcon style={{ color: "white" }} className="favorite" onClick={() => addToFavorite(id)} />
+           <>  {isAuth && ( <FavoriteIcon style={{ color: "white" }} className="favorite" onClick={() => addToFavorite(id)} />   )} </> 
             )} add to Favorite
               </Button>
             </div>

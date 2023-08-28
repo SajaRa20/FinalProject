@@ -6,9 +6,7 @@ import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import image from '../../Utils/images/notfound.png'
-import { Link } from "react-router-dom";
-import { HOME_PAGE } from '../../Utils/routes.constant';
- import styles from './style.css';
+import './style.css'
 
 function NotFound() {
 

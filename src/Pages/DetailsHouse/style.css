@@ -109,3 +109,8 @@
   flex-direction: column;
   align-items: center;
 }
+
+
+.css-11lq3yg-MuiGrid-root {
+  flex-direction: row !important ;
+}
