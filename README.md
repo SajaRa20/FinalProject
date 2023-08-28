@@ -5,8 +5,7 @@
 # Solution 💡
 #### Build web-based platform designed to help individuals find their dream homes ,The website aims to provide a user-friendly and efficient experience for home seekers.
 
-#User Stories 📖
-
+# User Stories 📖
 ### As a Renter and owner user:
 #### 1 I can Sign up into the website
 #### 2 I can log in into the website
