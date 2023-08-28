@@ -1,4 +1,16 @@
-# House Hunting App 🏠
-### house-hunting App that facilitates to access
+# House Hunting Website 🏠
+#### house-hunting Website that facilitates to access
 # Main problem 🌚
-###  Most of those who are looking for a house find it very difficult to search and wander around to several areas to find a house that suits them at a price according to their capabilities.
+####  Most of those who are looking for a house find it very difficult to search and wander around to several areas to find a house that suits them at a price according to their capabilities.
+# Solution 💡
+#### Build web-based platform designed to help individuals find their dream homes ,The website aims to provide a user-friendly and efficient experience for home seekers.
+#User Stories 📖
+As a Renter and owner user:
+I can Sign up into the website
+I can log in into the website
+I can see all available houses
+I can see specific information about any house
+I want to search by different locations, prices and the number of room in the house
+I can add houses to my favourite list
+I need to create my own profile
+I need control panel to manage my houses
