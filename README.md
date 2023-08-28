@@ -14,5 +14,6 @@
 ####  I can add houses to my favourite list
 ####  I need to create my own profile
 ####  I need control panel to manage my houses
+
 # User Journey ✈️
 #### As a user, I can see all available houses that able to rent, search to find houses and I can add any liked house to my favorite list , inside my profile I have my information
