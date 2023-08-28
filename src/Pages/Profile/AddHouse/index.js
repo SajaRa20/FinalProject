@@ -94,7 +94,6 @@ function AddHouse() {
     }, []);
   
     } catch (err) {
-      setError(err.response ? err.response.data.message : err.errors[0]);
     }
   };
 

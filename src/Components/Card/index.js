@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";
-import CardActionArea from "@mui/material/CardActionArea";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -28,7 +27,6 @@ export default function CardComponent({ house }) {
     image,
     title,
     description,
-    category,
     city,
     price,
     bedroom,

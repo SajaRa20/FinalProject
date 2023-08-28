@@ -23,7 +23,6 @@ body {
 }
 
 .css-11lq3yg-MuiGrid-root {
-  flex-direction: column !important;
   justify-content: center;
   align-items: center;
   padding-bottom: 5em !important;
@@ -57,6 +56,11 @@ body {
   width: 600px;
   border: none;
   outline: none;
+  
+}
+
+.css-epupbn-MuiGrid-root {
+  text-align: center;
 }
 
 .herosearch svg {
