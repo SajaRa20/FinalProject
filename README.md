@@ -31,7 +31,14 @@
 #### create an admin dashboard
 #### admin can view, edit, delete all users and houses
 #### create chat that allows users to contact and negotiate
-
+# Team
+### Lead Mentor 😎
+#### Yasmeen Attallah
+### Team Members 👥
+#### Saja Rabie
+# Resources 🔍
+ [https://material-ui.com/](https://material-ui.com/)
+[https://www.npmjs.com/package/yup](https://www.npmjs.com/package/yup)
 
 
 
