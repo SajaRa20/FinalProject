@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import * as yup from 'yup';
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -10,7 +11,7 @@ import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import image from "../../Utils/images/login.png";
-
+import validationSchema from "../../Utils/validations/login"
 import AuthContext from "../../Components/Context/AuthContext";
 
 import "./style.css";
@@ -22,8 +23,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState();
   const [open, setOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState();
-  
+  const validationErrors = {};
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -47,6 +47,7 @@ function Login() {
     event.preventDefault();
 
     try {
+      await validationSchema.validate({ name, password }, { abortEarly: false });
       const response = await fetch(
         "https://my-json-server.typicode.com/SajaRa20/newapi/users",
         {
@@ -65,7 +66,12 @@ function Login() {
       } else {
       }
     } catch (error) {
-      setError(err.response ? err.response.data.message : err.errors[0]);
+      if (error instanceof yup.ValidationError) {
+        error.inner.forEach(err => {
+          validationErrors[err.path] = err.message;
+        });
+      }
+      setError(validationErrors);
     }
   };
 
@@ -93,8 +99,8 @@ function Login() {
                 onChange={handleName}
                 value={name}
               />
-              <br />
-              <br />
+              <br/>
+              <br/>
               <TextField
                 className="lablelogin"
                 type="password"

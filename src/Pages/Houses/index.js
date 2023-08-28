@@ -19,7 +19,7 @@ function SearchPage() {
   const [type, setType] = useState();
   const [filteredHouses, setFilteredHouses] = useState([]);
   const [location, setLocation] = useState();
-  const [bedrooms, setBedrooms] = useState(0);
+  const [bedrooms, setBedrooms] = useState();
   const [priceRange, setPriceRange] = useState();
 
   // const resetInputs = () => {
@@ -83,12 +83,12 @@ function SearchPage() {
         </form>
         <div className="filter">
           <FormControl sx={{ m: 1, minWidth: 200 }}>
-            <InputLabel id="demo-simple-select-helper-label">city</InputLabel>
+            <InputLabel id="demo-simple-select-helper-label">Location</InputLabel>
             <Select
               labelId="demo-simple-select-helper-label"
               id="demo-simple-select-helper"
               value={location}
-              label="Age"
+              label="Bedroom"
               onChange={handleLocationChange}
             >
               {locationFilter.map((item) => (
@@ -122,14 +122,14 @@ function SearchPage() {
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="containerhero">
         <Typography
-          variant="h5"
-          component="h4"
-          color="primary"
+          variant="h4"
+          component="h3"
+          color="#2A5555"
           textAlign="center"
         >
-        {filteredHouses.length}  houses Available
+        <span>{filteredHouses.length}</span>  Houses Available
         </Typography>
         <CardContainer houses={filteredHouses} />
       </div>

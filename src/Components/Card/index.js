@@ -17,21 +17,13 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import { HOUSES } from "../../Utils/routes.constant";
-import AuthContext from '../../Components/Context/AuthContext';
+import AuthContext from "../../Components/Context/AuthContext";
 import "./style.css";
 
 export default function CardComponent({ house }) {
   const { isAuth } = useContext(AuthContext);
-  const {
-    id,
-    image,
-    title,
-    description,
-    city,
-    price,
-    bedroom,
-    bathroom,
-  } = house;
+  const { id, image, title, description, city, price, bedroom, bathroom } =
+    house;
 
   const [isFavorite, setIsFavorite] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -145,7 +137,7 @@ export default function CardComponent({ house }) {
                 />
               )}
             </Button>
-           )}
+          )}
           <Snackbar
             open={openSnackbar}
             autoHideDuration={3000}
