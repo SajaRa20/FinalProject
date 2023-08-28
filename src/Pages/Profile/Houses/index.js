@@ -9,26 +9,30 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 import TableContainer from "@mui/material/TableContainer";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
-
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import UpdateHouse from "../UpdateHouse";
+import "./style.css";
 function Houses() {
   const [houses, setHouses] = useState([]);
   const [refresh, setRefresh] = useState(false);
   const [error, setError] = useState();
   const [open, setOpen] = useState(false);
   const [openalert, setOpenalert] = useState(false);
+
   const handleClose = (reason) => {
     if (reason === "clickaway") {
       return;
     }
     setOpenalert(false);
   };
-
+  const handleClick = () => {
+    setOpenalert(true);
+  };
   useEffect(() => {
     (async () => {
       try {
@@ -86,81 +90,100 @@ function Houses() {
   }, [refresh]);
 
   return (
-      <TableContainer component={Paper}>
-        <Typography
-          variant="h4"
-          textAlign="center"
-          paddingTop="0.5em"
-          paddingBottom="0.5em"
-          color="#2A5555"
+    <TableContainer component={Paper}>
+      <Typography
+        variant="h4"
+        textAlign="center"
+        paddingTop="0.5em"
+        paddingBottom="0.5em"
+        color="#2A5555"
+      >
+        My Houses
+      </Typography>
+      <Table>
+        <TableBody>
+          {houses.length ? (
+            houses.slice(0, 4).map((house) => (
+              <>
+                <TableRow align="right">
+                  <TableCell>
+                    <img className="img" src={house.image} alt="house " />
+                  </TableCell>
+                  <TableCell style={{ color: "#7D7D7D", fontSize: "20px" }}>
+                    {house.title} <br />
+                    <br />
+                    {house.price} $ / week
+                  </TableCell>
+                  <TableCell style={{ color: "#7D7D7D", fontSize: "20px" }}>
+                    {" "}
+                    {house.city}{" "}
+                  </TableCell>
+                  <TableCell>
+                    <Button
+                      style={{ color: "red" }}
+                      color="primary"
+                      onClick={() => setOpen(true)}
+                    >
+                      <DeleteIcon />
+                    </Button>
+                    <UpdateHouse
+                      handleClickAlert={handleClick}
+                      handleCloseAlert={handleClose}
+                      userData={{
+                        title: house.title,
+                        description: house.description,
+                        city: house.city,
+                        category: house.category,
+                        bathroom: house.bathroom,
+                        price: house.price,
+                        image: house.image,
+                      }}
+                    />
+                  </TableCell>
+                </TableRow>
+                <Dialog open={open} onClose={() => setOpen(false)}>
+                  <HighlightOffIcon className="icon-Dialog" />
+                  <DialogTitle>Are you sure?</DialogTitle>
+                  <DialogContent>
+                    {" "}
+                    Do you really want to delete these records? <br />
+                    This process cannot be undone.
+                  </DialogContent>
+                  <DialogActions>
+                    <Button
+                      onClick={() => setOpen(false)}
+                      className="btn-Dialog-Cancel"
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        deleteHouse(house.id);
+                        setOpen(false);
+                      }}
+                      className="btn-Dialog-Delete"
+                    >
+                      Delete
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+              </>
+            ))
+          ) : (
+            <Alert severity="info">no houses added yet </Alert>
+          )}
+        </TableBody>
+        <Snackbar
+          open={openalert}
+          autoHideDuration={3000}
+          onClose={handleClose}
         >
-          My Houses
-        </Typography>
-        <Table>
-          <TableBody>
-            {houses.length ? (
-              houses.slice(0, 4).map((house) => (
-                <>
-                  <TableRow align="right">
-                    <TableCell>
-                      <img className="img" src={house.image} alt="house " />
-                    </TableCell>
-                    <TableCell style={{ color: "#7D7D7D", fontSize: "20px" }}>
-                      {house.title} <br />
-                      <br />
-                      {house.price} $ / week
-                    </TableCell>
-                    <TableCell style={{ color: "#7D7D7D", fontSize: "20px" }}>
-                      {" "}
-                      {house.city}{" "}
-                    </TableCell>
-                    <TableCell>
-                      <Button
-                        style={{ color: "red" }}
-                        color="primary"
-                        onClick={() => setOpen(true)}
-                      >
-                        <DeleteIcon />
-                      </Button>
-                      <Button style={{ color: "#7D7D7D" }} color="primary">
-                        <EditCalendarIcon />
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                  <Dialog open={open} onClose={() => setOpen(false)}>
-                    <DialogTitle>Confirm Deletion</DialogTitle>
-                    <DialogContent>
-                      {" "}
-                      Are you sure you want to delete this house?
-                    </DialogContent>
-                    <DialogActions>
-                      <Button onClick={() => setOpen(false)} color="primary">
-                        Cancel
-                      </Button>
-                      <Button
-                        onClick={() => {
-                          deleteHouse(house.id);
-                          setOpen(false);
-                        }}
-                        color="primary"
-                      >
-                        Delete
-                      </Button>
-                    </DialogActions>
-                  </Dialog>
-                </>
-              ))
-            ) : (
-              <Alert severity="info">no houses added yet </Alert>
-            )}
-          </TableBody>
-          <Snackbar open={openalert} autoHideDuration={3000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity="success">
-              Deleted successfully
-            </Alert>
-          </Snackbar>
-        </Table>
-      </TableContainer>
+          <Alert onClose={handleClose} severity="success">
+            Deleted successfully
+          </Alert>
+        </Snackbar>
+      </Table>
+    </TableContainer>
   );
 }
 export default Houses;

@@ -16,7 +16,8 @@ import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
-
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import './style.css'
 function Favorite() {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -128,14 +129,15 @@ function Favorite() {
                   </Button>
                 </StyledTableCell>
               </StyledTableRow>
-              <Dialog open={open} onClose={() => setOpen(false)}>
-                <DialogTitle>Confirm Deletion</DialogTitle>
+              <Dialog class="modal fade" open={open} onClose={() => setOpen(false)}>
+                <HighlightOffIcon className="icon-Dialog"/>
+                <DialogTitle>Are you sure?</DialogTitle>
                 <DialogContent>
                   {" "}
-                  Are you sure you want to delete this house?
+                  Do you really want to delete these records? <br/>This process cannot be undone.
                 </DialogContent>
                 <DialogActions>
-                  <Button onClick={() => setOpen(false)} color="primary">
+                  <Button onClick={() => setOpen(false)}  className="btn-Dialog-Cancel">
                     Cancel
                   </Button>
                   <Button
@@ -143,12 +145,13 @@ function Favorite() {
                       deleteHouse(house.id);
                       setOpen(false);
                     }}
-                    color="primary"
+                   className="btn-Dialog-Delete"
                   >
                     Delete
                   </Button>
                 </DialogActions>
               </Dialog>
+
             </>
           ))}
           <Snackbar open={openalert} autoHideDuration={3000} onClose={handleClose}>
