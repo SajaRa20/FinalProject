@@ -22,13 +22,6 @@ function SearchPage() {
   const [bedrooms, setBedrooms] = useState();
   const [priceRange, setPriceRange] = useState();
 
-  // const resetInputs = () => {
-  //   setLocation("");
-  //   setType("");
-  //   setBedrooms(0);
-  //   setPriceRange([50, 700]);
-  // };
-
   const handleLocationChange = (event) => {
     setLocation(event.target.value);
   };
@@ -52,7 +45,6 @@ function SearchPage() {
         setHouses(data);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
       });
   }, []);
 

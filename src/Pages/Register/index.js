@@ -85,13 +85,9 @@ function Register() {
         handleClose();
         navigate("/login");
       } else {
-        // Handle non-OK response, possibly including error messages from the server
         const responseData = await response.json();
-        // setError(responseData); // This could set the error state with server error messages
       }
     } catch (validationErrors) {
-      // Handle validation errors here
-      // setError(validationErrors); // Assuming validationErrors contains the validation error messages
     }
   };
   
