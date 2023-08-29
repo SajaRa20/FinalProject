@@ -13,13 +13,11 @@ import Button from "@mui/material/Button";
 import image from "../../Utils/images/login.png";
 import validationSchema from "../../Utils/validations/login"
 import AuthContext from "../../Components/Context/AuthContext";
-import  getCookies  from '../../Components/Cookies/getCookies'
-import  setCookies  from '../../Components/Cookies/setCookies'
-import  removeCookies  from '../../Components/Cookies/removeCookies'
 import "./style.css";
 
 function Login() {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
+  const { isAuth, setIsAuth, login } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -49,7 +47,7 @@ function Login() {
     event.preventDefault();
 
     try {
-      // await validationSchema.validate({ name, password }, { abortEarly: false });
+      await validationSchema.validate({ name, password }, { abortEarly: false });
       const response = await fetch(
         "https://my-json-server.typicode.com/SajaRa20/newapi/users",
         {
@@ -62,10 +60,9 @@ function Login() {
       );
 
       if (response.ok) {
-        console.log('saka');
-        setCookies('urse',JSON.stringify({ name, password }))
         setOpen(true);
-        setIsAuth(true);
+        login({ name, password },  { accessToken: name, refreshToken: name })
+         setIsAuth(true);
         navigate("/");
       } else {
       }
@@ -103,7 +100,7 @@ function Login() {
                 onChange={handleName}
                 value={name}
               />
-              <br/>
+              {error && <Typography variant="p" className="error">{error.name}</Typography>}
               <br/>
               <TextField
                 className="lablelogin"
@@ -114,6 +111,7 @@ function Login() {
                 onChange={handlePassword}
                 value={password}
               />
+              {error && <Typography variant="p" className="error">{error.password}</Typography>}
               <Snackbar
                 open={open}
                 autoHideDuration={8000}

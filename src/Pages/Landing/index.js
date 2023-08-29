@@ -19,7 +19,6 @@ function Landing() {
   };
 
   useEffect(() => {
-    // Fetch houses data from the API
     fetch("https://my-json-server.typicode.com/SajaRa20/newapi/houses")
       .then((response) => response.json())
       .then((data) => {
@@ -32,8 +31,6 @@ function Landing() {
 
   useEffect(() => {
     const priceThreshold = 300;
-
-    // Filter best seller houses based on criteria
     const filteredHouses = houses.filter(
       (house) => house.price < priceThreshold
     );

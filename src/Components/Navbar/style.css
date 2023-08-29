@@ -19,7 +19,7 @@
 }
 
 
-.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+/* .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
   width: 100% !important;
   height: 100% !important;
   background-color: #2A5555 !important;
@@ -37,20 +37,9 @@
 .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
   font-size: 25px !important;
   color: white !important;
-}
+} */
 
 .logout{
   color: red !important;
-  background-color: white !important;
-}
-
-
-
-.responsive {
-  max-width:10% !important;
-  max-height: 45%  !important;
-}
-.MenuItem {
-  color: #2A5555 !important;
   background-color: white !important;
 }
