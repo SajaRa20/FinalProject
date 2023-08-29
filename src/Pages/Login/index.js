@@ -13,7 +13,9 @@ import Button from "@mui/material/Button";
 import image from "../../Utils/images/login.png";
 import validationSchema from "../../Utils/validations/login"
 import AuthContext from "../../Components/Context/AuthContext";
-
+import  getCookies  from '../../Components/Cookies/getCookies'
+import  setCookies  from '../../Components/Cookies/setCookies'
+import  removeCookies  from '../../Components/Cookies/removeCookies'
 import "./style.css";
 
 function Login() {
@@ -47,7 +49,7 @@ function Login() {
     event.preventDefault();
 
     try {
-      await validationSchema.validate({ name, password }, { abortEarly: false });
+      // await validationSchema.validate({ name, password }, { abortEarly: false });
       const response = await fetch(
         "https://my-json-server.typicode.com/SajaRa20/newapi/users",
         {
@@ -60,6 +62,8 @@ function Login() {
       );
 
       if (response.ok) {
+        console.log('saka');
+        setCookies('urse',JSON.stringify({ name, password }))
         setOpen(true);
         setIsAuth(true);
         navigate("/");
