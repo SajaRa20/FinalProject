@@ -19,7 +19,7 @@ import "./style.css";
 function AddHouse() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [city, setLocation] = useState();
+  const [city, setLocation] = useState("");
   const [category, setCategory] = useState("");
   const [bedroom, setRooms] = useState();
   const [bathroom, setBathRooms] = useState();
@@ -68,49 +68,49 @@ function AddHouse() {
     setImage(event.target.value);
   };
 
-  const handleSubmit = async (e) => {
-    try {
-      e.preventDefault();
-      const userDate = {
-        id: "2",
-        title,
-        description,
-        city,
-        category,
-        bedroom,
-        bathroom,
-        price,
-        image,
-      };
-      useEffect(() => {
-        fetch("https://my-json-server.typicode.com/SajaRa20/newapi/houses", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userDate[0]),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            setOpen(true);
-            navigate("/profile");
-          })
-          .catch((error) => {
-            if (
-              error.response &&
-              error.response.data &&
-              error.response.data.message
-            ) {
-              setError(error.response.data.message);
-            } else {
-              setError("An unknown error occurred.");
-            }
-          });
-      }, []);
-    } catch (err) {
-      setOpen(true);
-      navigate("/profile");
-    }
+  const clear = ()=>{
+    setTitle("");
+    setDescription("");
+    setRooms('');
+    setBathRooms("");
+    setPrice("");
+    setImage("");
+    setCategory("");
+    setLocation("");
+   }
+
+  const handelAddHouse = () => {
+    const userDate = {
+      title,
+      description,
+      city,
+      category,
+      bedroom,
+      bathroom,
+      price,
+      image,
+    };
+
+    fetch(
+      "https://my-json-server.typicode.com/SajaRa20/newapi/houses",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userDate),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        clear();
+        setOpen(true);
+        console.log("Success:", data);
+        handleClose();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
@@ -232,7 +232,7 @@ function AddHouse() {
                 onChange={handleImage}
               />
               <Button
-                onClick={handleSubmit}
+                onClick={handelAddHouse}
                 className="btnadd"
                 sx={{
                   marginLeft: "13em",

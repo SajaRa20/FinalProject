@@ -16,10 +16,9 @@ import MenuItem from "@mui/material/MenuItem";
 import image from "../../Utils/images/logo.png";
 import AuthContext from '../../Components/Context/AuthContext';
 import "../Navbar/style.css";
-import { color } from "@mui/system";
 
 function NavBar() {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
+  const { isAuth, setIsAuth, logout } = useContext(AuthContext);
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [anchorElNav, setAnchorElNav] = useState(false);
   const [anchorElUser, setAnchorElUser] = useState(false);
@@ -69,17 +68,15 @@ function NavBar() {
   const handleProfile = () => {
     navigate("/profile");
   };
-
   const handleout = () => {
     try {
       setOpenSnackbar(true);
-      setIsAuth(false); 
+      logout();
       navigate("/");
     } catch (err) {
       setError('Internal server Error');
     }
   };
-
 
   return (
     <AppBar sx={{ bgcolor: "#2A5555", height: "80px" }}>

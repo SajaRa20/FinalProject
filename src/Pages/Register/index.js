@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import * as yup from 'yup';
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -9,9 +10,8 @@ import TextField from "@mui/material/TextField";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import Button from "@mui/material/Button";
-import validation from '../../Utils/validations/register';
 import image from "../../Utils/images/login.png";
-
+import validation from '../../Utils/validations/register'
 import "./style.css";
 
 function Register() {
@@ -22,17 +22,10 @@ function Register() {
   const [mobile, setMobile] = useState("");
   const [error, setError] = useState('');
   const [open, setOpen] = useState(false);
- 
+  const validationErrors = {};
 
   const handleSignin = (event) => {
     navigate("/login");
-  };
-
-  const clear = () => {
-    setUsername("");
-    setPassword("");
-    setConfirmPassword("");
-    setError(null);
   };
 
   const handleClose = (reason) => {
@@ -57,46 +50,51 @@ function Register() {
     setMobile(event.target.value);
   };
 
-  
+  const clear = ()=>{
+    setUsername("");
+    setPassword("");
+    setConfirmPassword('');
+    setMobile("");
+   }
 
-  const handleSubmit = async (e) => {
+   const handleAddUser = async () => {
     try {
-      e.preventDefault();
-      const userDate = {
-         username,
-         password,
-         confirmPassword,
-         mobile,
-     };
-
-      await validation.validate(userDate, {
-        abortEarly: false,                                                                                                                                                                mk
-      });
+      await validation.validate({ username, password, mobile }, { abortEarly: false });
       
-      useEffect(() => {
-        fetch('https://my-json-server.typicode.com/SajaRa20/newapi/newusers', {
-          method: 'POST',
+      const userData = {
+        username,
+        password,
+        mobile,
+      };
+  
+      const response = await fetch(
+        "https://my-json-server.typicode.com/SajaRa20/newapi/users",
+        {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify(userDate),
-        })
-          .then(response => response.json())
-          .then(data => {
-            setOpen(true);
-            clear();
-            navigate("/login");
-          })
-          .catch(error => {
-            setError(err.response ? err.response.data.message : err.errors[0]);
-          });
-      }, []);
-
-    } catch (err) {
-      setError(err.response ? err.response.data.message : err.errors[0]);
+          body: JSON.stringify(userData),
+        }
+      );
+  
+      if (response.ok) {
+        const data = await response.json();
+        clear();
+        setOpen(true);
+        handleClose();
+        navigate("/login");
+      } else {
+        // Handle non-OK response, possibly including error messages from the server
+        const responseData = await response.json();
+        // setError(responseData); // This could set the error state with server error messages
+      }
+    } catch (validationErrors) {
+      // Handle validation errors here
+      // setError(validationErrors); // Assuming validationErrors contains the validation error messages
     }
-
   };
+  
 
 
   return (                                                
@@ -163,7 +161,7 @@ function Register() {
                 </Alert>
               </Snackbar>
               <Button
-                onClick={handleSubmit}
+                onClick={handleAddUser}
                 sx={{
                   marginTop: "1.5em",
                   color: "white",
