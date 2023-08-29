@@ -114,7 +114,8 @@ function NavBar() {
             >
               <MenuIcon />
             </IconButton>
-            <Menu
+            <Menu 
+            className="responisve"
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -268,6 +269,7 @@ function NavBar() {
               </IconButton>
                <Menu
                 id="menu-appbar"
+                className="responsive"
                 anchorEl={anchorEl}
                 anchorOrigin={{
                   vertical: 'top',
@@ -281,7 +283,7 @@ function NavBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleProfile}>Profile</MenuItem>
+                <MenuItem onClick={handleProfile} className="MenuItem">Profile</MenuItem>
                 <MenuItem onClick={handleout} className="logout">Log out </MenuItem>
               </Menu>
             </div> 

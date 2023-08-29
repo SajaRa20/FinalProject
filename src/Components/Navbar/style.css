@@ -10,9 +10,6 @@
   color:#EB9235 !important ;
 }
 
-.logout{
-  color: red !important;
-}
 
 
 .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
@@ -35,4 +32,25 @@
 .css-1uwgr7b-MuiTypography-root {
   font-size: 25px !important;
   color: white !important;
+}
+
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  font-size: 25px !important;
+  color: white !important;
+}
+
+.logout{
+  color: red !important;
+  background-color: white !important;
+}
+
+
+
+.responsive {
+  max-width:10% !important;
+  max-height: 45%  !important;
+}
+.MenuItem {
+  color: #2A5555 !important;
+  background-color: white !important;
 }
