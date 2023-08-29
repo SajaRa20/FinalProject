@@ -36,8 +36,6 @@ function a11yProps(index) {
 
 function SideBar() {
   const [value, setValue] = useState(0);
-  const [username, setUsername] = useState("");
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -62,7 +60,7 @@ function SideBar() {
           className="tabs"
         >
           <Tab
-            label="Personal"
+            label="Personal Inforamtion "
             icon={<PersonOutlineIcon />}
             className="tab"
             {...a11yProps(0)}
@@ -74,7 +72,7 @@ function SideBar() {
             {...a11yProps(1)}
           />
           <Tab
-            label="Favorites"
+            label="Favorites House"
             icon={<FavoriteBorderIcon />}
             className="tab"
             {...a11yProps(2)}

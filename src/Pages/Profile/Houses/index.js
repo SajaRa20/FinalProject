@@ -62,12 +62,9 @@ function Houses() {
       if (response.ok) {
         setOpenalert(true);
       }
-
-      // Assuming you want to refresh the list of houses after deletion
       const updatedHouses = houses.filter((house) => house.id !== houseId);
       setHouses(updatedHouses);
     } catch (error) {
-      console.error("Error deleting house:", error);
       setError("Failed to delete the house");
     }
   };
