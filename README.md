@@ -6,14 +6,14 @@
 #### Build web-based platform designed to help individuals find their dream homes ,The website aims to provide a user-friendly and efficient experience for home seekers.
 # User Stories 📖
 ### As a Renter and owner user:
-####  I can Sign up into the website
-####  I can log in into the website
-####  I can see all available houses
-####  I can see specific information about any house
-####  I want to search by different locations, prices and the number of room in the house
-####  I can add houses to my favourite list
-####  I need to create my own profile
-####  I need control panel to manage my houses
+  - I can Sign up into the website
+  - I can log in into the website
+  - I can see all available houses
+ -  I can see specific information about any house
+ -  I want to search by different locations, prices and the number of room in the house
+ -  I can add houses to my favourite list
+ -  I need to create my own profile
+ -  I need control panel to manage my houses
 
 # User Journey ✈️
 #### As a user, I can see all available houses that able to rent, search to find houses and I can add any liked house to my favorite list , inside my profile I have my information
