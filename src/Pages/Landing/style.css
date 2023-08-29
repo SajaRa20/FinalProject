@@ -84,6 +84,13 @@ body {
   .herotext {
     font-size: 2em !important;
   }
+
+  .css-md5urv-MuiTypography-root{
+    margin-left: 174px !important;
+    width: 150px !important;
+    height: 84px !important;
+  }
+
 }
 
 @media (min-width: 768px) and (max-width: 1200px) {
