@@ -19,25 +19,16 @@
 }
 
 
-/* .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+ .responsive {
   width: 100% !important;
   height: 100% !important;
   background-color: #2A5555 !important;
 }
 
-.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
-  line-height: 65px !important;
-}
-
-.css-1uwgr7b-MuiTypography-root {
+.responsiveh{
   font-size: 25px !important;
   color: white !important;
 }
-
-.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
-  font-size: 25px !important;
-  color: white !important;
-} */
 
 .logout{
   color: red !important;

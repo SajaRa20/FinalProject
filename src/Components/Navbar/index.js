@@ -100,7 +100,7 @@ function NavBar() {
             <img src={image} className="img" />
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box  sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -112,7 +112,6 @@ function NavBar() {
               <MenuIcon />
             </IconButton>
             <Menu 
-            className="responisve"
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -130,10 +129,10 @@ function NavBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItem>
-                <Typography textAlign="center">About us</Typography>
+              <MenuItem   className="responsive">
+                <Typography className="responsiveh" textAlign="center">About us</Typography>
                 <br/>
-                <Typography textAlign="center">Housese</Typography>
+                <Typography className="responsiveh" textAlign="center">Housese</Typography>
                 <br/>
                 <Box>
                 <Button
@@ -266,7 +265,6 @@ function NavBar() {
               </IconButton>
                <Menu
                 id="menu-appbar"
-                className="responsive"
                 anchorEl={anchorEl}
                 anchorOrigin={{
                   vertical: 'top',

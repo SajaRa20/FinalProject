@@ -22,8 +22,7 @@ import "./style.css";
 
 export default function CardComponent({ house }) {
   const { isAuth } = useContext(AuthContext);
-  const { id, image, title, description, city, price, bedroom, bathroom } =
-    house;
+  const { id, image, title, description, city, price, bedroom, bathroom } = house;
 
   const [isFavorite, setIsFavorite] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -41,15 +40,11 @@ export default function CardComponent({ house }) {
     })
       .then((response) => {
         if (response.ok) {
-          console.log("House added to favorites");
           setIsFavorite(true);
           setOpenSnackbar(true);
-        } else {
-          console.error("Failed to add to favorites");
         }
       })
       .catch((error) => {
-        console.error("Error adding to favorites:", error);
       });
   };
 
