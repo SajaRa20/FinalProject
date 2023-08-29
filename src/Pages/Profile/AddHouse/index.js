@@ -105,11 +105,8 @@ function AddHouse() {
       .then((data) => {
         clear();
         setOpen(true);
-        console.log("Success:", data);
-        handleClose();
       })
       .catch((error) => {
-        console.error("Error:", error);
       });
   };
 
