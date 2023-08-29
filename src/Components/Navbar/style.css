@@ -14,3 +14,25 @@
   color: red !important;
 }
 
+
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  width: 100% !important;
+  height: 100% !important;
+  background-color: #2A5555 !important;
+}
+
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  line-height: 65px !important;
+}
+
+.css-1uwgr7b-MuiTypography-root {
+  font-size: 25px !important;
+  color: white !important;
+}

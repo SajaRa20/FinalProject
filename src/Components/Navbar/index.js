@@ -23,10 +23,15 @@ function NavBar() {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [anchorElNav, setAnchorElNav] = useState(false);
   const [anchorElUser, setAnchorElUser] = useState(false);
-
- 
   const [anchorEl, setAnchorEl] = useState(false);
   const [error, setError] = useState('');
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
   const handleCloseSnackbar = (event, reason) => {
     if (reason === 'clickaway') {
@@ -35,10 +40,6 @@ function NavBar() {
 
     setOpenSnackbar(false);
   };
-
-  // const handleChange = (event) => {
-  //   setAuth(event.target.checked);
-  // };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -83,7 +84,6 @@ function NavBar() {
   return (
     <AppBar sx={{ bgcolor: "#2A5555", height: "80px" }}>
       <Container maxWidth="xl">
-      {console.log(isAuth)}
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -109,6 +109,7 @@ function NavBar() {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
+              onClick={handleOpenNavMenu}
               color="inherit"
             >
               <MenuIcon />
@@ -126,14 +127,49 @@ function NavBar() {
                 horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
               }}
             >
               <MenuItem>
                 <Typography textAlign="center">About us</Typography>
-                <Typography textAlign="center"> </Typography>
+                <br/>
                 <Typography textAlign="center">Housese</Typography>
+                <br/>
+                <Box>
+                <Button
+                 onClick={handlregister}
+                  className="btn"
+                  sx={{
+                    marginRight: 2,
+                    color: "white",
+                    bgcolor: "#EB9235",
+                    fontWeight: "500",
+                    "&:hover": {
+                      backgroundColor: "white",
+                      color: "#2A5555",
+                    },
+                  }}
+                >
+                  SIGNUP
+                </Button>
+                <Button
+                  onClick={handlelogin}
+                  sx={{
+                    marginRight: 2,
+                    color: "#2A5555",
+                    bgcolor: "white",
+                    fontWeight: "500",
+                    "&:hover": {
+                      backgroundColor: "#EB9235",
+                      color: "white",
+                    },
+                  }}
+                >
+                  LOGIN
+                </Button>
+              </Box>
               </MenuItem>
             </Menu>
           </Box>
@@ -177,10 +213,12 @@ function NavBar() {
             >
               Housese
             </Button>
-          </Box>
+          </Box >
           {isAuth === false ? (
             <>
-              <Box>
+              <Box sx={{
+                display: { xs: "none", md: "block", lg:'block', sm: 'block' },
+              }}>
                 <Button
                  onClick={handlregister}
                   className="btn"
