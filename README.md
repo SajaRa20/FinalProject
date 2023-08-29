@@ -26,16 +26,16 @@
 #### ReactJS (Hooks).
 #### Material UI
 #### Yup Validation
-# Stretch Goals 🥅
-#### user can see the location of the house on the map and compare between two houses
-#### create an admin dashboard
-#### admin can view, edit, delete all users and houses
-#### create chat that allows users to contact and negotiate
 # Team
 ### Lead Mentor 😎
 #### Yasmeen Attallah
 ### Team Members 👥
 #### Saja Rabie
+# Stretch Goals 🥅
+#### user can see the location of the house on the map and compare between two houses
+#### create an admin dashboard
+#### admin can view, edit, delete all users and houses
+#### create chat that allows users to contact and negotiate
 # Resources 🔍
  [https://material-ui.com/](https://material-ui.com/)
  
