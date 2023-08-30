@@ -1,8 +1,7 @@
-
 import * as yup from "yup";
 
-const validation = yup.object().shape({
-  name: yup.string().required("name is required"),
+const validationRegister = yup.object().shape({
+  username: yup.string().required("name is required"),
   password: yup
     .string()
     .min(8, "password must be at least 8 char")
@@ -10,7 +9,7 @@ const validation = yup.object().shape({
   confirmPassword: yup
     .string()
     .oneOf([yup.ref("password"), null], "passwords must match"),
-  mobile: yup.number().min(9).required(),
+  mobile: yup.string().min(9).required(),
 });
 
-export default validation;
+export default validationRegister;

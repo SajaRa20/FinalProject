@@ -11,7 +11,7 @@ import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import Button from "@mui/material/Button";
 import image from "../../Utils/images/login.png";
-import validation from '../../Utils/validations/register'
+import validationRegister from '../../Utils/validations/register'
 import "./style.css";
 
 function Register() {
@@ -57,16 +57,16 @@ function Register() {
     setMobile("");
    }
 
-   const handleAddUser = async () => {
+   const handleAddUser = async (event) => {
+    event.preventDefault();
     try {
-      await validation.validate({ username, password, mobile }, { abortEarly: false });
-      
+      await validationRegister.validate({username, password,confirmPassword, mobile}, { abortEarly: false });
+
       const userData = {
         username,
         password,
         mobile,
       };
-  
       const response = await fetch(
         "https://my-json-server.typicode.com/SajaRa20/newapi/users",
         {
@@ -77,21 +77,23 @@ function Register() {
           body: JSON.stringify(userData),
         }
       );
-  
       if (response.ok) {
         const data = await response.json();
         clear();
         setOpen(true);
         handleClose();
         navigate("/login");
-      } else {
-        const responseData = await response.json();
+      } 
+    }  catch (error) {
+      if (error instanceof yup.ValidationError) {
+        error.inner.forEach(err => {
+          validationErrors[err.path] = err.message;
+        });
       }
-    } catch (validationErrors) {
+      setError(validationErrors);
+      console.log(validationErrors);
     }
-  };
-  
-
+   }
 
   return (                                                
     <Container maxWidth="lg" className="divregister">
@@ -117,7 +119,9 @@ function Register() {
                 onChange={handleusername}
                 required
               />
+                   {error && <Typography variant="p" className="error">{error.username}</Typography>}
               <br />
+              
               <TextField
                 type="password"
                 id="outlined-basic"
@@ -127,6 +131,7 @@ function Register() {
                 onChange={handlepassword}
                 required
               />
+                   {error && <Typography variant="p" className="error">{error.password}</Typography>}
               <br />
               <TextField
                 type="password"
@@ -137,9 +142,10 @@ function Register() {
                 onChange={handleconfirmPassword}
                 required
               />
+                 {error && <Typography variant="p" className="error">{error.confirmPassword}</Typography>}
               <br />
               <TextField
-                type="password"
+                type="text"
                 id="outlined-basic"
                 label="Enter you phone number..."
                 variant="outlined"
@@ -147,6 +153,7 @@ function Register() {
                 onChange={handlemobile}
                 required
               />
+              {error && <Typography variant="p" className="error">{error.mobile}</Typography>}
               <Snackbar
                 open={open}
                 autoHideDuration={6000}
@@ -183,5 +190,6 @@ function Register() {
     </Container>
   );
 }
+
 
 export default Register;
