@@ -102,27 +102,31 @@ function UpdateHouse({ house }) {
   };
   return (
     <>
-      <Button onClick={handleClickDialog}  style={{ color: "#7D7D7D" }} color="primary">
-        <EditCalendarIcon/>
+      <Button
+        onClick={handleClickDialog}
+        style={{ color: "#7D7D7D" }}
+        color="primary"
+      >
+        <EditCalendarIcon />
       </Button>
       <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
         <DialogTitle>Confirm Updating</DialogTitle>
         <DialogContent>
           {" "}
           <TextField
-          className="title"
+            className="title"
             id="outlined-basic"
             label="Title"
             placeholder="Enter the Title"
             variant="outlined"
             required
-             onChange={handleTitle}
+            onChange={handleTitle}
             value={title}
           />
           <br />
           <br />
           <TextField
-           className="description"
+            className="description"
             id="outlined-basic"
             label="Description"
             placeholder="Enter the Description"
@@ -143,7 +147,7 @@ function UpdateHouse({ house }) {
               label="Rooms"
               name="rooms"
               required
-               onChange={handleRooms}
+              onChange={handleRooms}
               value={bedroom}
             />
             <TextField
@@ -153,7 +157,7 @@ function UpdateHouse({ house }) {
               label="Bathrooms"
               name="bathrooms"
               required
-               onChange={handleBathrooms}
+              onChange={handleBathrooms}
               value={bathroom}
             />
             <TextField
@@ -163,7 +167,7 @@ function UpdateHouse({ house }) {
               label="Price ₪"
               name="price"
               required
-               onChange={handlePrice}
+              onChange={handlePrice}
               value={price}
             />
           </div>
@@ -180,7 +184,7 @@ function UpdateHouse({ house }) {
               variant="outlined"
               name="location"
               value={city}
-               onChange={handleLocation}
+              onChange={handleLocation}
             >
               {locationFilter.map((item) => (
                 <MenuItem value={item}>{item.toLocaleLowerCase()}</MenuItem>
@@ -196,7 +200,7 @@ function UpdateHouse({ house }) {
               variant="outlined"
               name="category"
               value={category}
-               onChange={handleCategory}
+              onChange={handleCategory}
             >
               {categorFilter.map((item) => (
                 <MenuItem value={item}>{item.toLocaleLowerCase()}</MenuItem>
@@ -206,18 +210,21 @@ function UpdateHouse({ house }) {
           <br />
           <br />
           <TextField
-          className="image"
+            className="image"
             variant="outlined"
             placeholder="Enter the url image"
             type="text"
             name="image"
             required
             value={image}
-             onChange={handleImage}
+            onChange={handleImage}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpenDialog(false)} className="btn-Dialog-Cancel">
+          <Button
+            onClick={() => setOpenDialog(false)}
+            className="btn-Dialog-Cancel"
+          >
             Cancel
           </Button>
           <Button

@@ -14,8 +14,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
-import CreditScoreIcon from '@mui/icons-material/CreditScore';
-import './style.css'
+import CreditScoreIcon from "@mui/icons-material/CreditScore";
+import "./style.css";
 
 function UserInfo() {
   const [user, setUser] = useState({});
@@ -60,8 +60,7 @@ function UserInfo() {
       if (!response.ok) {
         setOpenalert(true);
       }
-    } catch (err) {
-    }
+    } catch (err) {}
   };
 
   useEffect(() => {
@@ -79,101 +78,104 @@ function UserInfo() {
   }, [user]);
 
   return (
-      <TableContainer component={Paper}>
-        <Typography
-          variant="h4"
-          textAlign="center"
-          paddingTop="0.5em"
-          paddingBottom="0.5em"
-          color="#2A5555"
-        >
-          User Information
-        </Typography>
-        <Table>
-          <TableBody>
-            <TableRow align="center">
-              <FormControl defaultValue="" className="formlogin" required>
-                <TextField
-                  id="outlined"
-                  label="User Name"
-                  defaultValue="Saja"
-                  value={username}
-                  onChange={handleUserName}
-                />
-                <br />
-                <br />
-                <TextField
-                  id="outlined"
-                  label="Email"
-                  defaultValue="sajarabie2@gmail.com"
-                  value={email}
-                  onChange={handleEmail}
-                />
-                <br />
-                <br />
-                <TextField
-                  id="outlined"
-                  label="Mobile"
-                  defaultValue="0599169669"
-                  value={mobile}
-                  onChange={handleMobile}
-                />
-                <Button
-                 onClick={() => setOpen(true)}
-                  className="btnadd"
-                  sx={{
-                    marginLeft:'13em',
-                    width:'200px',
-                    marginTop: "2.5em",
-                    marginBottom: "2.5em",
+    <TableContainer component={Paper}>
+      <Typography
+        variant="h4"
+        textAlign="center"
+        paddingTop="0.5em"
+        paddingBottom="0.5em"
+        color="#2A5555"
+      >
+        User Information
+      </Typography>
+      <Table>
+        <TableBody>
+          <TableRow align="center">
+            <FormControl defaultValue="" className="formlogin" required>
+              <TextField
+                id="outlined"
+                label="User Name"
+                defaultValue="Saja"
+                value={username}
+                onChange={handleUserName}
+              />
+              <br />
+              <br />
+              <TextField
+                id="outlined"
+                label="Email"
+                defaultValue="sajarabie2@gmail.com"
+                value={email}
+                onChange={handleEmail}
+              />
+              <br />
+              <br />
+              <TextField
+                id="outlined"
+                label="Mobile"
+                defaultValue="0599169669"
+                value={mobile}
+                onChange={handleMobile}
+              />
+              <Button
+                onClick={() => setOpen(true)}
+                className="btnadd"
+                sx={{
+                  marginLeft: "13em",
+                  width: "200px",
+                  marginTop: "2.5em",
+                  marginBottom: "2.5em",
+                  color: "white",
+                  bgcolor: "#EB9235",
+                  fontSize: "20px",
+                  fontWeight: "300",
+                  "&:hover": {
+                    backgroundColor: "#EB9235",
                     color: "white",
-                    bgcolor: "#EB9235",
-                    fontSize: "20px",
-                    fontWeight: "300",
-                    "&:hover": {
-                      backgroundColor: "#EB9235",
-                      color: "white",
-                    },
-                  }}
-                >
-                  Save
-                </Button>
-                <Dialog open={open} onClose={() => setOpen(false)}>
-                <CreditScoreIcon className="icon-Dialog-edit"/>
-                  <DialogTitle>Confirm Updating</DialogTitle>
-                  <DialogContent>
-                    {" "}
-                    Are you sure you want to update this personal?
-                  </DialogContent>
-                  <DialogActions>
-                    <Button onClick={() => setOpen(false)} className="btn-Dialog-Cancel">
-                      Cancel
-                    </Button>
-                    <Button
-                      onClick={() => {
-                        handleSubmit();
-                        setOpen(false);
-                      }}
-                      className="btn-Dialog-Updat"
-                    >
-                      Update
-                    </Button>
-                  </DialogActions>
-                </Dialog>
-                <Snackbar
-                  open={openalert}
-                  autoHideDuration={8000}
-                  onClose={handleClose}
-                >
-                  <Alert onClose={handleClose} severity="success">
-                    User updated successfully
-                  </Alert>
-                </Snackbar>
-              </FormControl>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
+                  },
+                }}
+              >
+                Save
+              </Button>
+              <Dialog open={open} onClose={() => setOpen(false)}>
+                <CreditScoreIcon className="icon-Dialog-edit" />
+                <DialogTitle>Confirm Updating</DialogTitle>
+                <DialogContent>
+                  {" "}
+                  Are you sure you want to update this personal?
+                </DialogContent>
+                <DialogActions>
+                  <Button
+                    onClick={() => setOpen(false)}
+                    className="btn-Dialog-Cancel"
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      handleSubmit();
+                      setOpen(false);
+                    }}
+                    className="btn-Dialog-Updat"
+                  >
+                    Update
+                  </Button>
+                </DialogActions>
+              </Dialog>
+              <Snackbar
+                open={openalert}
+                autoHideDuration={8000}
+                onClose={handleClose}
+              >
+                <Alert onClose={handleClose} severity="success">
+                  User updated successfully
+                </Alert>
+              </Snackbar>
+            </FormControl>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }
 export default UserInfo;

@@ -9,7 +9,7 @@ import SearchIcon from "@mui/icons-material/SearchSharp";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import CardContainer from '../../Components/CardContainer'
+import CardContainer from "../../Components/CardContainer";
 import { locationFilter } from "../../Utils/staticData";
 
 import "./style.css";
@@ -29,7 +29,7 @@ function SearchPage() {
   const handleTypeChange = (event) => {
     setType(event.target.value);
   };
-  
+
   const handleBedroomsChange = (event) => {
     setBedrooms(event.target.value);
   };
@@ -37,25 +37,29 @@ function SearchPage() {
   const handlePriceRangeChange = (event, newValue) => {
     setPriceRange(newValue);
   };
-  
+
   useEffect(() => {
     fetch("https://my-json-server.typicode.com/SajaRa20/newapi/houses")
       .then((response) => response.json())
       .then((data) => {
         setHouses(data);
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   }, []);
 
   const handleSearch = (event) => {
     event.preventDefault();
-    const filteredHouses = houses.filter((house) => 
-    (!location || house.city.toLowerCase() === location.toLowerCase()) ||
-    (bedrooms && house.bedroom === +bedrooms) ||
-    (priceRange && house.price >= priceRange[0] && house.price <= priceRange[1]) ||
-    (type && house.category.toLowerCase().includes(type.toLowerCase().trim()))
-  );
+    const filteredHouses = houses.filter(
+      (house) =>
+        !location ||
+        house.city.toLowerCase() === location.toLowerCase() ||
+        (bedrooms && house.bedroom === +bedrooms) ||
+        (priceRange &&
+          house.price >= priceRange[0] &&
+          house.price <= priceRange[1]) ||
+        (type &&
+          house.category.toLowerCase().includes(type.toLowerCase().trim()))
+    );
     setFilteredHouses(filteredHouses);
   };
 
@@ -75,7 +79,9 @@ function SearchPage() {
         </form>
         <div className="filter">
           <FormControl sx={{ m: 1, minWidth: 200 }}>
-            <InputLabel id="demo-simple-select-helper-label">Location</InputLabel>
+            <InputLabel id="demo-simple-select-helper-label">
+              Location
+            </InputLabel>
             <Select
               labelId="demo-simple-select-helper-label"
               id="demo-simple-select-helper"
@@ -121,7 +127,7 @@ function SearchPage() {
           color="#2A5555"
           textAlign="center"
         >
-        <span>{filteredHouses.length}</span>  Houses Available
+          <span>{filteredHouses.length}</span> Houses Available
         </Typography>
         <CardContainer houses={filteredHouses} />
       </div>

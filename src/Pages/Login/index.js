@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as yup from 'yup';
+import * as yup from "yup";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -11,7 +11,7 @@ import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import image from "../../Utils/images/login.png";
-import validationSchema from "../../Utils/validations/login"
+import validationSchema from "../../Utils/validations/login";
 import AuthContext from "../../Components/Context/AuthContext";
 import "./style.css";
 
@@ -25,7 +25,7 @@ function Login() {
   const [openlog, setOpenLog] = useState(false);
   const validationErrors = {};
   const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setOpenLog(false);
@@ -47,7 +47,10 @@ function Login() {
     event.preventDefault();
 
     try {
-      await validationSchema.validate({ name, password }, { abortEarly: false });
+      await validationSchema.validate(
+        { name, password },
+        { abortEarly: false }
+      );
       const response = await fetch(
         "https://my-json-server.typicode.com/SajaRa20/newapi/users",
         {
@@ -61,14 +64,14 @@ function Login() {
 
       if (response.ok) {
         setOpenLog(true);
-        login({ name, password },  { accessToken: name, refreshToken: name })
-         setIsAuth(true);
+        login({ name, password }, { accessToken: name, refreshToken: name });
+        setIsAuth(true);
         navigate("/");
       } else {
       }
     } catch (error) {
       if (error instanceof yup.ValidationError) {
-        error.inner.forEach(err => {
+        error.inner.forEach((err) => {
           validationErrors[err.path] = err.message;
         });
       }
@@ -100,8 +103,12 @@ function Login() {
                 onChange={handleName}
                 value={name}
               />
-              {error && <Typography variant="p" className="error">{error.name}</Typography>}
-              <br/>
+              {error && (
+                <Typography variant="p" className="error">
+                  {error.name}
+                </Typography>
+              )}
+              <br />
               <TextField
                 className="lablelogin"
                 type="password"
@@ -111,7 +118,11 @@ function Login() {
                 onChange={handlePassword}
                 value={password}
               />
-              {error && <Typography variant="p" className="error">{error.password}</Typography>}
+              {error && (
+                <Typography variant="p" className="error">
+                  {error.password}
+                </Typography>
+              )}
               <Snackbar
                 open={openlog}
                 autoHideDuration={8000}

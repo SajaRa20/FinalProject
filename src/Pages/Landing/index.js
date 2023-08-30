@@ -24,8 +24,7 @@ function Landing() {
       .then((data) => {
         setHouses(data);
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   }, []);
 
   useEffect(() => {

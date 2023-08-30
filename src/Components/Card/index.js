@@ -22,7 +22,8 @@ import "./style.css";
 
 export default function CardComponent({ house }) {
   const { isAuth } = useContext(AuthContext);
-  const { id, image, title, description, city, price, bedroom, bathroom } = house;
+  const { id, image, title, description, city, price, bedroom, bathroom } =
+    house;
 
   const [isFavorite, setIsFavorite] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -44,8 +45,7 @@ export default function CardComponent({ house }) {
           setOpenSnackbar(true);
         }
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
 
   const handleCloseSnackbar = (event, reason) => {

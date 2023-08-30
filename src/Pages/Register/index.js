@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as yup from 'yup';
+import * as yup from "yup";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -11,7 +11,7 @@ import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import Button from "@mui/material/Button";
 import image from "../../Utils/images/login.png";
-import validationRegister from '../../Utils/validations/register'
+import validationRegister from "../../Utils/validations/register";
 import "./style.css";
 
 function Register() {
@@ -20,7 +20,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [mobile, setMobile] = useState("");
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [open, setOpen] = useState(false);
   const validationErrors = {};
 
@@ -50,17 +50,20 @@ function Register() {
     setMobile(event.target.value);
   };
 
-  const clear = ()=>{
+  const clear = () => {
     setUsername("");
     setPassword("");
-    setConfirmPassword('');
+    setConfirmPassword("");
     setMobile("");
-   }
+  };
 
-   const handleAddUser = async (event) => {
+  const handleAddUser = async (event) => {
     event.preventDefault();
     try {
-      await validationRegister.validate({username, password,confirmPassword, mobile}, { abortEarly: false });
+      await validationRegister.validate(
+        { username, password, confirmPassword, mobile },
+        { abortEarly: false }
+      );
 
       const userData = {
         username,
@@ -83,18 +86,18 @@ function Register() {
         setOpen(true);
         handleClose();
         navigate("/login");
-      } 
-    }  catch (error) {
+      }
+    } catch (error) {
       if (error instanceof yup.ValidationError) {
-        error.inner.forEach(err => {
+        error.inner.forEach((err) => {
           validationErrors[err.path] = err.message;
         });
       }
       setError(validationErrors);
     }
-   }
+  };
 
-  return (                                                
+  return (
     <Container maxWidth="lg" className="divregister">
       <Grid
         container
@@ -118,9 +121,13 @@ function Register() {
                 onChange={handleusername}
                 required
               />
-                   {error && <Typography variant="p" className="error">{error.username}</Typography>}
+              {error && (
+                <Typography variant="p" className="error">
+                  {error.username}
+                </Typography>
+              )}
               <br />
-              
+
               <TextField
                 type="password"
                 id="outlined-basic"
@@ -130,7 +137,11 @@ function Register() {
                 onChange={handlepassword}
                 required
               />
-                   {error && <Typography variant="p" className="error">{error.password}</Typography>}
+              {error && (
+                <Typography variant="p" className="error">
+                  {error.password}
+                </Typography>
+              )}
               <br />
               <TextField
                 type="password"
@@ -141,7 +152,11 @@ function Register() {
                 onChange={handleconfirmPassword}
                 required
               />
-                 {error && <Typography variant="p" className="error">{error.confirmPassword}</Typography>}
+              {error && (
+                <Typography variant="p" className="error">
+                  {error.confirmPassword}
+                </Typography>
+              )}
               <br />
               <TextField
                 type="text"
@@ -152,7 +167,11 @@ function Register() {
                 onChange={handlemobile}
                 required
               />
-              {error && <Typography variant="p" className="error">{error.mobile}</Typography>}
+              {error && (
+                <Typography variant="p" className="error">
+                  {error.mobile}
+                </Typography>
+              )}
               <Snackbar
                 open={open}
                 autoHideDuration={6000}
@@ -189,6 +208,5 @@ function Register() {
     </Container>
   );
 }
-
 
 export default Register;
