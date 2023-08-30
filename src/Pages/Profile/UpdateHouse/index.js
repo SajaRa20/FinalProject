@@ -14,15 +14,15 @@ import { locationFilter, categorFilter } from "../../../Utils/staticData";
 
 import "./style.css";
 
-function UpdateHouse({  handleClickAlert, handleCloseAlert }) {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [city, setLocation] = useState();
-  const [category, setCategory] = useState("");
-  const [bedroom, setRooms] = useState();
-  const [bathroom, setBathRooms] = useState();
-  const [price, setPrice] = useState();
-  const [image, setImage] = useState("");
+function UpdateHouse({ house }) {
+  const [title, setTitle] = useState(house.title);
+  const [description, setDescription] = useState(house.description);
+  const [city, setLocation] = useState(house.city);
+  const [category, setCategory] = useState(house.category);
+  const [bedroom, setRooms] = useState(house.bedroom);
+  const [bathroom, setBathRooms] = useState(house.bathroom);
+  const [price, setPrice] = useState(house.price);
+  const [image, setImage] = useState(house.image);
   const [error, setError] = useState("");
   const [open, setOpen] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
@@ -70,7 +70,6 @@ function UpdateHouse({  handleClickAlert, handleCloseAlert }) {
   const handleSubmit = async (e) => {
     try {
       const userDate = {
-        id: "2",
         title,
         description,
         city,
@@ -88,12 +87,12 @@ function UpdateHouse({  handleClickAlert, handleCloseAlert }) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(user),
+          body: JSON.stringify(userDate),
         }
       );
 
       if (!response.ok) {
-        setOpenalert(true);
+        setOpen(true);
       }
     } catch (err) {}
   };
@@ -117,7 +116,7 @@ function UpdateHouse({  handleClickAlert, handleCloseAlert }) {
             placeholder="Enter the Title"
             variant="outlined"
             required
-            onChange={handleTitle}
+             onChange={handleTitle}
             value={title}
           />
           <br />
@@ -144,7 +143,7 @@ function UpdateHouse({  handleClickAlert, handleCloseAlert }) {
               label="Rooms"
               name="rooms"
               required
-              onChange={handleRooms}
+               onChange={handleRooms}
               value={bedroom}
             />
             <TextField
@@ -154,7 +153,7 @@ function UpdateHouse({  handleClickAlert, handleCloseAlert }) {
               label="Bathrooms"
               name="bathrooms"
               required
-              onChange={handleBathrooms}
+               onChange={handleBathrooms}
               value={bathroom}
             />
             <TextField
@@ -164,7 +163,7 @@ function UpdateHouse({  handleClickAlert, handleCloseAlert }) {
               label="Price ₪"
               name="price"
               required
-              onChange={handlePrice}
+               onChange={handlePrice}
               value={price}
             />
           </div>
@@ -181,7 +180,7 @@ function UpdateHouse({  handleClickAlert, handleCloseAlert }) {
               variant="outlined"
               name="location"
               value={city}
-              onChange={handleLocation}
+               onChange={handleLocation}
             >
               {locationFilter.map((item) => (
                 <MenuItem value={item}>{item.toLocaleLowerCase()}</MenuItem>
@@ -197,7 +196,7 @@ function UpdateHouse({  handleClickAlert, handleCloseAlert }) {
               variant="outlined"
               name="category"
               value={category}
-              onChange={handleCategory}
+               onChange={handleCategory}
             >
               {categorFilter.map((item) => (
                 <MenuItem value={item}>{item.toLocaleLowerCase()}</MenuItem>
@@ -214,7 +213,7 @@ function UpdateHouse({  handleClickAlert, handleCloseAlert }) {
             name="image"
             required
             value={image}
-            onChange={handleImage}
+             onChange={handleImage}
           />
         </DialogContent>
         <DialogActions>
