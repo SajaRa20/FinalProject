@@ -124,15 +124,14 @@ function Houses() {
                       <DeleteIcon />
                     </Button>
                     <UpdateHouse
-                      handleClickAlert={handleClick}
-                      handleCloseAlert={handleClose}
-                      userData={{
+                      house={{
                         title: house.title,
                         description: house.description,
                         city: house.city,
                         category: house.category,
                         bathroom: house.bathroom,
                         price: house.price,
+                        bedroom: house.bedroom,
                         image: house.image,
                       }}
                     />
