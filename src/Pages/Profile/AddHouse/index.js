@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as yup from 'yup';
+import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
@@ -14,7 +14,7 @@ import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import FormControl from "@mui/material/FormControl";
 import { locationFilter, categorFilter } from "../../../Utils/staticData";
-import validationAdd from '../../../Utils/validations/Addhouse'
+import validationAdd from "../../../Utils/validations/Addhouse";
 
 import "./style.css";
 
@@ -71,31 +71,34 @@ function AddHouse() {
     setImage(event.target.value);
   };
 
-  const clear = ()=>{
+  const clear = () => {
     setTitle("");
     setDescription("");
-    setRooms('');
+    setRooms("");
     setBathRooms("");
     setPrice("");
     setImage("");
     setCategory("");
     setLocation("");
-   }
+  };
   const handelAddHouse = async (event) => {
     event.preventDefault();
     try {
-      await validationAdd.validate({title, description,city, bedroom,bathroom,category,price,image}, { abortEarly: false });
+      await validationAdd.validate(
+        { title, description, city, bedroom, bathroom, category, price, image },
+        { abortEarly: false }
+      );
 
-    const houseDate = {
-       title,
-       description,
-       city,
-       category,
-      bedroom,
-      bathroom,
-       price,
-       image,
-     };
+      const houseDate = {
+        title,
+        description,
+        city,
+        category,
+        bedroom,
+        bathroom,
+        price,
+        image,
+      };
       const response = await fetch(
         "https://my-json-server.typicode.com/SajaRa20/newapi/houses",
         {
@@ -110,16 +113,16 @@ function AddHouse() {
         const data = await response.json();
         clear();
         setOpen(true);
-      } 
-    }  catch (error) {
+      }
+    } catch (error) {
       if (error instanceof yup.ValidationError) {
-        error.inner.forEach(err => {
+        error.inner.forEach((err) => {
           validationErrors[err.path] = err.message;
         });
       }
       setError(validationErrors);
     }
-   }
+  };
 
   return (
     <TableContainer component={Paper}>
@@ -145,7 +148,11 @@ function AddHouse() {
                 onChange={handleTitle}
                 value={title}
               />
-                   {error && <Typography variant="p" className="error">{error.title}</Typography>}
+              {error && (
+                <Typography variant="p" className="error">
+                  {error.title}
+                </Typography>
+              )}
               <br />
               <br />
               <TextField
@@ -159,7 +166,11 @@ function AddHouse() {
                 onChange={handleDescription}
                 value={description}
               />
-                   {error && <Typography variant="p" className="error">{error.description}</Typography>}
+              {error && (
+                <Typography variant="p" className="error">
+                  {error.description}
+                </Typography>
+              )}
               <br />
               <br />
               <div className="divnum">
@@ -173,7 +184,11 @@ function AddHouse() {
                   onChange={handleRooms}
                   value={bedroom}
                 />
-                     {error && <Typography variant="p" className="error">{error.bedroom}</Typography>}
+                {error && (
+                  <Typography variant="p" className="error">
+                    {error.bedroom}
+                  </Typography>
+                )}
                 <TextField
                   variant="outlined"
                   type="number"
@@ -184,7 +199,11 @@ function AddHouse() {
                   onChange={handleBathrooms}
                   value={bathroom}
                 />
-                     {error && <Typography variant="p" className="error">{error.bathroom}</Typography>}
+                {error && (
+                  <Typography variant="p" className="error">
+                    {error.bathroom}
+                  </Typography>
+                )}
                 <TextField
                   variant="outlined"
                   type="number"
@@ -195,7 +214,11 @@ function AddHouse() {
                   onChange={handlePrice}
                   value={price}
                 />
-                     {error && <Typography variant="p" className="error">{error.price}</Typography>}
+                {error && (
+                  <Typography variant="p" className="error">
+                    {error.price}
+                  </Typography>
+                )}
               </div>
               <br />
               <br />
@@ -216,7 +239,11 @@ function AddHouse() {
                     <MenuItem value={item}>{item.toLocaleLowerCase()}</MenuItem>
                   ))}
                 </TextField>
-                {error && <Typography variant="p" className="error">{error.city}</Typography>}
+                {error && (
+                  <Typography variant="p" className="error">
+                    {error.city}
+                  </Typography>
+                )}
                 <TextField
                   className="category"
                   required
@@ -233,7 +260,11 @@ function AddHouse() {
                     <MenuItem value={item}>{item.toLocaleLowerCase()}</MenuItem>
                   ))}
                 </TextField>
-                {error && <Typography variant="p" className="error">{error.category}</Typography>}
+                {error && (
+                  <Typography variant="p" className="error">
+                    {error.category}
+                  </Typography>
+                )}
               </div>
               <br />
               <br />
@@ -246,7 +277,11 @@ function AddHouse() {
                 value={image}
                 onChange={handleImage}
               />
-                   {error && <Typography variant="p" className="error">{error.image}</Typography>}
+              {error && (
+                <Typography variant="p" className="error">
+                  {error.image}
+                </Typography>
+              )}
               <Button
                 onClick={handelAddHouse}
                 className="btnadd"

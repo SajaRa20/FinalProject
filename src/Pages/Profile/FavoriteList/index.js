@@ -16,8 +16,8 @@ import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import './style.css'
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import "./style.css";
 function Favorite() {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -126,15 +126,23 @@ function Favorite() {
                   </Button>
                 </StyledTableCell>
               </StyledTableRow>
-              <Dialog class="modal fade" open={open} onClose={() => setOpen(false)}>
-                <HighlightOffIcon className="icon-Dialog"/>
+              <Dialog
+                class="modal fade"
+                open={open}
+                onClose={() => setOpen(false)}
+              >
+                <HighlightOffIcon className="icon-Dialog" />
                 <DialogTitle>Are you sure?</DialogTitle>
                 <DialogContent>
                   {" "}
-                  Do you really want to delete these records? <br/>This process cannot be undone.
+                  Do you really want to delete these records? <br />
+                  This process cannot be undone.
                 </DialogContent>
                 <DialogActions>
-                  <Button onClick={() => setOpen(false)}  className="btn-Dialog-Cancel">
+                  <Button
+                    onClick={() => setOpen(false)}
+                    className="btn-Dialog-Cancel"
+                  >
                     Cancel
                   </Button>
                   <Button
@@ -142,16 +150,19 @@ function Favorite() {
                       deleteHouse(house.id);
                       setOpen(false);
                     }}
-                   className="btn-Dialog-Delete"
+                    className="btn-Dialog-Delete"
                   >
                     Delete
                   </Button>
                 </DialogActions>
               </Dialog>
-
             </>
           ))}
-          <Snackbar open={openalert} autoHideDuration={3000} onClose={handleClose}>
+          <Snackbar
+            open={openalert}
+            autoHideDuration={3000}
+            onClose={handleClose}
+          >
             <Alert onClose={handleClose} severity="success">
               Deleted successfully
             </Alert>

@@ -1,20 +1,18 @@
-import React , { useContext ,useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import AccountCircle from '@mui/icons-material/AccountCircle';
+import AccountCircle from "@mui/icons-material/AccountCircle";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import Alert from "@mui/material/Alert";
-import Snackbar from "@mui/material/Snackbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import image from "../../Utils/images/logo.png";
-import AuthContext from '../../Components/Context/AuthContext';
+import AuthContext from "../../Components/Context/AuthContext";
 import "../Navbar/style.css";
 
 function NavBar() {
@@ -23,7 +21,7 @@ function NavBar() {
   const [anchorElNav, setAnchorElNav] = useState(false);
   const [anchorElUser, setAnchorElUser] = useState(false);
   const [anchorEl, setAnchorEl] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -33,7 +31,7 @@ function NavBar() {
   };
 
   const handleCloseSnackbar = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
@@ -73,7 +71,7 @@ function NavBar() {
       logout();
       navigate("/");
     } catch (err) {
-      setError('Internal server Error');
+      setError("Internal server Error");
     }
   };
 
@@ -99,7 +97,7 @@ function NavBar() {
             <img src={image} className="img" />
           </Typography>
 
-          <Box  sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -110,7 +108,7 @@ function NavBar() {
             >
               <MenuIcon />
             </IconButton>
-            <Menu 
+            <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -128,44 +126,48 @@ function NavBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItem   className="responsive">
-                <Typography className="responsiveh" textAlign="center">About us</Typography>
-                <br/>
-                <Typography className="responsiveh" textAlign="center">Housese</Typography>
-                <br/>
+              <MenuItem className="responsive">
+                <Typography className="responsiveh" textAlign="center">
+                  About us
+                </Typography>
+                <br />
+                <Typography className="responsiveh" textAlign="center">
+                  Housese
+                </Typography>
+                <br />
                 <Box>
-                <Button
-                 onClick={handlregister}
-                  className="btn"
-                  sx={{
-                    marginRight: 2,
-                    color: "white",
-                    bgcolor: "#EB9235",
-                    fontWeight: "500",
-                    "&:hover": {
-                      backgroundColor: "white",
-                      color: "#2A5555",
-                    },
-                  }}
-                >
-                  SIGNUP
-                </Button>
-                <Button
-                  onClick={handlelogin}
-                  sx={{
-                    marginRight: 2,
-                    color: "#2A5555",
-                    bgcolor: "white",
-                    fontWeight: "500",
-                    "&:hover": {
-                      backgroundColor: "#EB9235",
+                  <Button
+                    onClick={handlregister}
+                    className="btn"
+                    sx={{
+                      marginRight: 2,
                       color: "white",
-                    },
-                  }}
-                >
-                  LOGIN
-                </Button>
-              </Box>
+                      bgcolor: "#EB9235",
+                      fontWeight: "500",
+                      "&:hover": {
+                        backgroundColor: "white",
+                        color: "#2A5555",
+                      },
+                    }}
+                  >
+                    SIGNUP
+                  </Button>
+                  <Button
+                    onClick={handlelogin}
+                    sx={{
+                      marginRight: 2,
+                      color: "#2A5555",
+                      bgcolor: "white",
+                      fontWeight: "500",
+                      "&:hover": {
+                        backgroundColor: "#EB9235",
+                        color: "white",
+                      },
+                    }}
+                  >
+                    LOGIN
+                  </Button>
+                </Box>
               </MenuItem>
             </Menu>
           </Box>
@@ -209,14 +211,21 @@ function NavBar() {
             >
               Housese
             </Button>
-          </Box >
+          </Box>
           {isAuth === false ? (
             <>
-              <Box sx={{
-                display: { xs: "none", md: "block", lg:'block', sm: 'block' },
-              }}>
+              <Box
+                sx={{
+                  display: {
+                    xs: "none",
+                    md: "block",
+                    lg: "block",
+                    sm: "block",
+                  },
+                }}
+              >
                 <Button
-                 onClick={handlregister}
+                  onClick={handlregister}
                   className="btn"
                   sx={{
                     marginRight: 2,
@@ -251,36 +260,42 @@ function NavBar() {
           ) : (
             <>
               <div>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                className="profileicon"
-              >
-                <AccountCircle/>
-                <Typography textAlign="center" color='white'>Hi,Saja</Typography>
-              </IconButton>
-               <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleProfile} className="MenuItem">Profile</MenuItem>
-                <MenuItem onClick={handleout} className="logout">Log out </MenuItem>
-              </Menu>
-            </div> 
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleMenu}
+                  className="profileicon"
+                >
+                  <AccountCircle />
+                  <Typography textAlign="center" color="white">
+                    Hi,Saja
+                  </Typography>
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleProfile} className="MenuItem">
+                    Profile
+                  </MenuItem>
+                  <MenuItem onClick={handleout} className="logout">
+                    Log out{" "}
+                  </MenuItem>
+                </Menu>
+              </div>
             </>
           )}
         </Toolbar>

@@ -4,7 +4,7 @@ import { Tabs, Typography, Tab, Avatar, Box } from "@mui/material";
 import HouseSidingIcon from "@mui/icons-material/HouseSiding";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from "@mui/icons-material/Add";
 import Favorite from "../FavoriteList";
 import Houses from "../Houses";
 import UserInfo from "../UserInfo";
