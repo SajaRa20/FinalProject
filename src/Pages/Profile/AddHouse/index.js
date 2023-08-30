@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import * as yup from 'yup';
 import { useNavigate } from "react-router-dom";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
@@ -13,6 +14,7 @@ import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import FormControl from "@mui/material/FormControl";
 import { locationFilter, categorFilter } from "../../../Utils/staticData";
+import validationAdd from '../../../Utils/validations/Addhouse'
 
 import "./style.css";
 
@@ -27,6 +29,7 @@ function AddHouse() {
   const [image, setImage] = useState("");
   const [error, setError] = useState("");
   const [open, setOpen] = useState(false);
+  const validationErrors = {};
   const navigate = useNavigate();
 
   const handleClose = (reason) => {
@@ -78,37 +81,45 @@ function AddHouse() {
     setCategory("");
     setLocation("");
    }
+  const handelAddHouse = async (event) => {
+    event.preventDefault();
+    try {
+      await validationAdd.validate({title, description,city, bedroom,bathroom,category,price,image}, { abortEarly: false });
 
-  const handelAddHouse = () => {
-    const userDate = {
-      title,
-      description,
-      city,
-      category,
+    const houseDate = {
+       title,
+       description,
+       city,
+       category,
       bedroom,
       bathroom,
-      price,
-      image,
-    };
-
-    fetch(
-      "https://my-json-server.typicode.com/SajaRa20/newapi/houses",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userDate),
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
+       price,
+       image,
+     };
+      const response = await fetch(
+        "https://my-json-server.typicode.com/SajaRa20/newapi/houses",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(houseDate),
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
         clear();
         setOpen(true);
-      })
-      .catch((error) => {
-      });
-  };
+      } 
+    }  catch (error) {
+      if (error instanceof yup.ValidationError) {
+        error.inner.forEach(err => {
+          validationErrors[err.path] = err.message;
+        });
+      }
+      setError(validationErrors);
+    }
+   }
 
   return (
     <TableContainer component={Paper}>
@@ -134,6 +145,7 @@ function AddHouse() {
                 onChange={handleTitle}
                 value={title}
               />
+                   {error && <Typography variant="p" className="error">{error.title}</Typography>}
               <br />
               <br />
               <TextField
@@ -147,6 +159,7 @@ function AddHouse() {
                 onChange={handleDescription}
                 value={description}
               />
+                   {error && <Typography variant="p" className="error">{error.description}</Typography>}
               <br />
               <br />
               <div className="divnum">
@@ -160,6 +173,7 @@ function AddHouse() {
                   onChange={handleRooms}
                   value={bedroom}
                 />
+                     {error && <Typography variant="p" className="error">{error.bedroom}</Typography>}
                 <TextField
                   variant="outlined"
                   type="number"
@@ -170,6 +184,7 @@ function AddHouse() {
                   onChange={handleBathrooms}
                   value={bathroom}
                 />
+                     {error && <Typography variant="p" className="error">{error.bathroom}</Typography>}
                 <TextField
                   variant="outlined"
                   type="number"
@@ -180,6 +195,7 @@ function AddHouse() {
                   onChange={handlePrice}
                   value={price}
                 />
+                     {error && <Typography variant="p" className="error">{error.price}</Typography>}
               </div>
               <br />
               <br />
@@ -200,6 +216,7 @@ function AddHouse() {
                     <MenuItem value={item}>{item.toLocaleLowerCase()}</MenuItem>
                   ))}
                 </TextField>
+                {error && <Typography variant="p" className="error">{error.city}</Typography>}
                 <TextField
                   className="category"
                   required
@@ -216,18 +233,20 @@ function AddHouse() {
                     <MenuItem value={item}>{item.toLocaleLowerCase()}</MenuItem>
                   ))}
                 </TextField>
+                {error && <Typography variant="p" className="error">{error.category}</Typography>}
               </div>
               <br />
               <br />
               <TextField
                 variant="outlined"
                 placeholder="Enter the url image"
-                type="file"
+                type="text"
                 name="image"
                 required
                 value={image}
                 onChange={handleImage}
               />
+                   {error && <Typography variant="p" className="error">{error.image}</Typography>}
               <Button
                 onClick={handelAddHouse}
                 className="btnadd"
