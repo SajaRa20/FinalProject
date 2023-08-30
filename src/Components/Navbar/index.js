@@ -70,7 +70,6 @@ function NavBar() {
   };
   const handleout = () => {
     try {
-      setOpenSnackbar(true);
       logout();
       navigate("/");
     } catch (err) {
@@ -282,11 +281,6 @@ function NavBar() {
                 <MenuItem onClick={handleout} className="logout">Log out </MenuItem>
               </Menu>
             </div> 
-            <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnackbar}>
-        <Alert onClose={handleCloseSnackbar} severity="success">
-          LogOut  successfully!
-        </Alert>
-      </Snackbar>
             </>
           )}
         </Toolbar>

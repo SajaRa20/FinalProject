@@ -22,13 +22,13 @@ function Login() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState();
-  const [open, setOpen] = useState(false);
+  const [openlog, setOpenLog] = useState(false);
   const validationErrors = {};
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
-     setOpen(false);
+    setOpenLog(false);
   };
 
   const handleSignup = (event) => {
@@ -60,7 +60,7 @@ function Login() {
       );
 
       if (response.ok) {
-        setOpen(true);
+        setOpenLog(true);
         login({ name, password },  { accessToken: name, refreshToken: name })
          setIsAuth(true);
         navigate("/");
@@ -113,7 +113,7 @@ function Login() {
               />
               {error && <Typography variant="p" className="error">{error.password}</Typography>}
               <Snackbar
-                open={open}
+                open={openlog}
                 autoHideDuration={8000}
                 onClose={handleClose}
               >
