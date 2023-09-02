@@ -21,21 +21,24 @@
 # Prototype 🎨
 [Figma Link](https://www.figma.com/file/D4zdVZLmxtdZJkfiswjlyv/House-Hunting?type=design&node-id=0-1&mode=design&t=8BeMuyDR1R3iCg3W-0)
 
-# Technologies 💻
-### Front-end Technology:
-#### ReactJS (Hooks).
-#### Material UI
-#### Yup Validation
-# Team
-### Lead Mentor 😎
-#### Yasmeen Attallah
-### Team Members 👥
-#### Saja Rabie
 # Stretch Goals 🥅
 #### user can see the location of the house on the map and compare between two houses
 #### create an admin dashboard
 #### admin can view, edit, delete all users and houses
 #### create chat that allows users to contact and negotiate
+
+
+# Technologies 💻
+### UI/UX Designer:
+#### Figma
+### Front-end Technology:
+#### ReactJS (Hooks)
+#### Material UI
+#### Yup Validation
+### Lead Mentor 😎
+#### Yasmeen Attallah
+### By 👥
+#### Saja Rabie
 # Resources 🔍
  [https://material-ui.com/](https://material-ui.com/)
  
