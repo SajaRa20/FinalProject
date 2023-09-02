@@ -30,14 +30,14 @@
 
 # Technologies 💻
 ### UI/UX Designer:
-#### Figma
+- Figma
 ### Front-end Technology:
-#### ReactJS (Hooks)
-#### Material UI
-#### Yup Validation
-### Lead Mentor 😎
+- ReactJS (Hooks)
+- Material UI
+- Yup Validation
+## Lead Mentor 😎
 #### Yasmeen Attallah
-### By 👥
+## By 👥
 #### Saja Rabie
 # Resources 🔍
  [https://material-ui.com/](https://material-ui.com/)
